@@ -1,0 +1,43 @@
+body {
+    margin: 0px auto;
+    padding: 0px;
+    height: 100%;
+    text-align: center;
+
+}
+.background {
+    background-color: #eee;
+    margin: 0 auto;
+    padding: 0px;
+}
+.top {
+    height: 20vh;
+    border: 1px solid green;
+    text-align: center;
+}
+.mid{
+    height: 50vh;
+    margin: 0 auto;
+    text-align: center;
+}
+.bot {
+    height: 30vh;
+    border: 1px solid red;
+}
+.center {
+    margin: 0 auto;
+    width: 50%;
+    height: 100%;
+}
+#buttonOK {
+    display: block;
+}
+#question {
+
+}
+#answer {
+
+}    
+#sendAnswer {
+
+}
