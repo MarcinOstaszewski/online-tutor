@@ -13,6 +13,7 @@ body {
     height: 20vh;
     border: 1px solid green;
     text-align: center;
+    padding: 20px auto;
 }
 .mid{
     height: 50vh;
@@ -30,13 +31,16 @@ body {
 }
 #buttonOK {
     display: block;
+    margin: 0 auto;
+    padding: 10px;
 }
 #question {
-    margin: 0 auto;
+    padding: 10px;
+    margin: 20px auto;
 }
 #answer {
-    margin: 0 auto;
+    margin: 20px auto;
 }    
 #sendAnswer {
-    margin: 0 auto;
+    margin: 20px auto;
 }
