@@ -1,27 +1,24 @@
 import React from 'react';
-import './App.css';
+import Main from './components/Main/Main'
+import styles from './App.module.css';
 
-function App() {
-return (
-	<div className="App">
+const App = () => {
 
-		<header className="NavBar">
-			<p>NAVBAR</p>
-		</header>
-		
-		<main>
-			<div className="center">
-				<div className="example"></div>
-				<div className="question">QUESTION</div>
-				<input type="text" className="answer"></input>
-				<button className="button-confirm">OK</button>
-			</div>
-		</main>
+	console.log(styles)
 
-		<footer></footer>
-		
-	</div>
-);
+	return (
+		<div className="App">
+
+			<header>
+				<div className={styles.NavBar}>NAVBAR</div>
+			</header>
+			
+			<Main />
+
+			<footer>Online-Tutor by MarcinO</footer>
+
+		</div>
+	);
 }
 
 export default App;
