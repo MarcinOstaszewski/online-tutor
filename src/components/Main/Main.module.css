@@ -7,31 +7,38 @@
     font-size: 0.8em;
     font-style: italic;
 }
-.question {
+.questionDiv {
     margin: 10px 0;
     font-size: 1.2em;
 }
-.answer {
+.answerInput {
     display: block;
     margin: 10px auto;
     width: 300px;
     max-width: 60%;
-    height: 50px;
-    border-radius: 10px;
+    height: 60px;
+    border-radius: 18px;
     border: 1px solid #44bbaa;
     box-shadow: none;
     text-align: center;
     font-size: 1em;
 }
-.buttonConfirm {
+.button {
     display: block;
     margin: 10px auto;
     width: 300px;
     max-width: 60%;
-    height: 50px;
-    border-radius: 10px;
-    border: 1px solid #60c3d6;
-    background-color: #74e0f5;
+    height: 60px;
+    border-radius: 18px;
     box-shadow: none;
     font-size: 1em;
+}
+.btnConfirm {
+    border: 1px solid #60c3d6;
+    background-color: #74e0f5;
+}
+
+.btnStart {
+    border: 1px solid #54bd54;
+    background-color: #62e263;
 }
