@@ -7,7 +7,8 @@ class Main extends Component {
     state = {
         lastRandom: 0,
         random: 0,
-        question: '> Naciśnij start <',
+        exampleText: '---',
+        question: 'Naciśnij "Losuj słowo"',
         answerText: '',
         started: false
     }
@@ -23,14 +24,18 @@ class Main extends Component {
     }
 
     checkAnswer = () => {
-        // console.log(this.state.lastRandom);
-        // console.log(this.list[this.state.lastRandom].a);
-        
+        let correct = (this.state.answerText === this.list[this.state.lastRandom].a);
+        console.log(correct);
+        let q = this.state.question;
+        let a = this.state.answerText;
+        this.setState({
+            question: "DOBRZE -- " + q + ' to po angielsku ' + a + '!',
+            started: false
+        })
         return this.list[this.state.lastRandom].a;
     }
 
     changeAnswerHandler = (event) => {
-        console.log(event.target.value)
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -55,7 +60,8 @@ class Main extends Component {
     startGame = () => {
         this.updateQuestion();
         this.setState({
-            started: true
+            started: true,
+            answerText: ''
         })
     }
 
@@ -70,12 +76,12 @@ class Main extends Component {
             button = <button className={[styles.button, styles.btnConfirm].join(' ')}
                 onClick={this.checkAnswer}>Sprawdź</button> :
             button = <button className={[styles.button, styles.btnStart].join(' ')}
-                onClick={this.startGame}>START</button>
+                onClick={this.startGame}>Losuj słowo</button>
         ;
 
         return (
             <main className={styles.Centered}>
-                <div className={styles.exampleText}>example text</div>
+                <div className={styles.exampleText}>{this.state.exampleText}</div>
                 <div className={styles.questionDiv}>{this.state.question}</div>
                 <input type="text" 
                     name="answerText"
