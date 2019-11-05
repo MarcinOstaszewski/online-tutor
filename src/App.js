@@ -4,8 +4,6 @@ import styles from './App.module.css';
 
 const App = () => {
 
-	console.log(styles)
-
 	return (
 		<div className="App">
 
