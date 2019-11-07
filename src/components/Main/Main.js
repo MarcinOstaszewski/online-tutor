@@ -1,51 +1,73 @@
 import React, { Component } from 'react';
 import styles from './Main.module.css';
 
-import words_post from '../../assets/wordLists/wordsPost';
+import wordsPost from '../../assets/wordLists/wordsPost';
+import wordsAnimals from '../../assets/wordLists/wordsAnimals';
 
 class Main extends Component {
     state = {
         lastRandom: 0,
         random: 0,
         exampleText: '---',
-        question: 'Naciśnij "Losuj słowo"',
+        question: 'Wybierz listę słów poniżej',
         answerText: '',
-        started: false
+        answerColor: 'black',
+        listChosen: false,
+        started: false,
+    }
+
+    listName = ''
+
+    wordsLists = {
+        wordsAnimals: wordsAnimals,
+        wordsPost: wordsPost
     }
     
-    list = words_post; // later it will fetch lists from DB
-
-    rnd = (max) => {
+    getRandom = (max) => {
         return Math.floor(Math.random() * max);
     } 
 
     chooseQuestion = () => {
-        return this.list[this.state.random].q
+        return this.wordsLists[this.listName][this.state.random].q
     }
 
     checkAnswer = () => {
-        let correct = (this.state.answerText === this.list[this.state.lastRandom].a);
-        console.log(correct);
         let q = this.state.question;
-        let a = this.state.answerText;
-        this.setState({
-            question: "DOBRZE -- " + q + ' to po angielsku ' + a + '!',
-            started: false
-        })
-        return this.list[this.state.lastRandom].a;
+        let inputA = this.state.answerText;
+        let correctA = this.wordsLists[this.listName][this.state.lastRandom].a
+        let correct = (this.state.answerText === correctA);
+        if (correct) {
+            this.setState({
+                question: "DOBRZE! " + q + ' to po angielsku ' + inputA + '!',
+                answerColor: 'green',
+                started: false
+            })
+        } else {
+            this.setState({
+                question: "Niestety... " + q + ' to po angielsku ' + correctA + '!',
+                answerColor: 'red',
+                started: false
+            })
+        }
+        return this.wordsLists[this.listName][this.state.lastRandom].a;
     }
 
-    changeAnswerHandler = (event) => {
+    keyDownHandler = (e) => {
+        if (e.key === 'Enter') {
+            this.checkAnswer();
+        }
+    }
+    changeAnswerHandler = (e) => {
         this.setState({
-            [event.target.name]: event.target.value
+            [e.target.name]: e.target.value
         })
     }
 
     updateRnd = () => {
-        let rnd = this.state.random;
+        let rand = this.state.random;
         this.setState({
-            lastRandom: rnd,
-            random: this.rnd(  Object.keys(this.list).length  )
+            lastRandom: rand,
+            random: this.getRandom(Object.keys(this.wordsLists[this.listName]).length)
         })
     }
 
@@ -53,7 +75,8 @@ class Main extends Component {
         this.updateRnd();
         console.log(this.state.random);
         this.setState({
-            question: this.chooseQuestion()
+            question: this.chooseQuestion(),
+            answerColor: 'black'
         })
     }
 
@@ -65,30 +88,50 @@ class Main extends Component {
         })
     }
 
-    componentDidMount = () => {
+    chooseWordList = (e) => {
+        console.log(e.target.innerText);
+        this.listName = 'words' + e.target.innerText;
         this.updateRnd();
+        // this.startGame();
+        this.setState({
+            question: 'Naciśnij "Losuj słowo"',
+            listChosen: true
+        })
+    }
+
+    componentDidMount = () => {
         console.log(this.state.question)
     }
     
     render() {
-        let button;
-        this.state.started ? 
-            button = <button className={[styles.button, styles.btnConfirm].join(' ')}
-                onClick={this.checkAnswer}>Sprawdź</button> :
-            button = <button className={[styles.button, styles.btnStart].join(' ')}
-                onClick={this.startGame}>Losuj słowo</button>
+        let button, buttonText;
+        buttonText = this.state.listChosen ? 'Losuj słowo' : 'Wybierz listę poniżej';
+        button = this.state.started ?
+            <button className={[styles.button, styles.btnConfirm].join(' ')}
+                onClick={this.checkAnswer}>Wpisz odpowiedź i sprawdź</button> :
+            <button className={[styles.button, styles.btnStart].join(' ')}
+                onClick={this.startGame}
+                disabled={!this.state.listChosen}>{buttonText}</button>
         ;
 
         return (
             <main className={styles.Centered}>
                 <div className={styles.exampleText}>{this.state.exampleText}</div>
-                <div className={styles.questionDiv}>{this.state.question}</div>
+                <div className={styles.questionDiv}
+                    style={{color: this.state.answerColor}}>{this.state.question}</div>
                 <input type="text" 
                     name="answerText"
                     className={styles.answerInput}
                     onChange={this.changeAnswerHandler}
-                    value={this.state.answerText} />
+                    onKeyDown={this.keyDownHandler}
+                    value={this.state.answerText} 
+                    />
                 {button}
+
+                <button className={[styles.button, styles.btnWords].join(' ')}
+                    onClick={this.chooseWordList}>Animals</button>
+                <button className={[styles.button, styles.btnWords].join(' ')}
+                    onClick={this.chooseWordList}>Post</button>
             </main>
         )
     }

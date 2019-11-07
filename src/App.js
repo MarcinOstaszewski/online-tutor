@@ -8,7 +8,7 @@ const App = () => {
 		<div className="App">
 
 			<header>
-				<div className={styles.NavBar}>NAVBAR</div>
+				<div className={styles.NavBar}>-NAVBAR-</div>
 			</header>
 			
 			<Main />
