@@ -1,11 +1,11 @@
-let words_post = {
+const wordsPost = {
     0: {
         q: 'skrzynka', 
-        a : 'box',
+        a : 'box'
     },
     1: {
         q: 'list', 
-        a: 'letter',
+        a: 'letter'
     },
     2: {
         q: 'listonosz', 
@@ -13,11 +13,11 @@ let words_post = {
     },
     3: {
         q: 'papier', 
-        a : 'paper',
+        a : 'paper'
     },
     4: {
         q: 'znaczek', 
-        a: 'stamp',
+        a: 'stamp'
     },
     5: {
         q: 'koperta', 
@@ -25,11 +25,11 @@ let words_post = {
     },
     6: {
         q: 'paczka',
-        a: 'parcel',
+        a: 'parcel'
     },
     7: {
         q: 'kasa',
-        a: 'cashier',
+        a: 'cashier'
     },
     8: {
         q: 'urzędnik',
@@ -37,11 +37,11 @@ let words_post = {
     },
     9: {
         q: 'skrzynka',
-        a: 'box',
+        a: 'box'
     },
     10: {
         q: 'klient',
-        a: 'client',
+        a: 'client'
     },
     11: {
         q: 'pieczątka',
@@ -49,4 +49,4 @@ let words_post = {
     }
 }
 
-export default words_post;
+export default wordsPost;
