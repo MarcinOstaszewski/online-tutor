@@ -9,7 +9,7 @@ class Main extends Component {
         lastRandom: 0,
         random: 0,
         exampleText: '---',
-        question: 'Wybierz listę słów poniżej',
+        question: 'Wybierz listę z MENU',
         answerText: '',
         answerColor: 'black',
         listChosen: false,
@@ -99,13 +99,14 @@ class Main extends Component {
         })
     }
 
-    componentDidMount = () => {
-        console.log(this.state.question)
-    }
+    // componentDidMount = () => {
+    //     console.log(this.state.question);
+    // }
     
     render() {
         let button, buttonText;
-        buttonText = this.state.listChosen ? 'Losuj słowo' : 'Wybierz listę poniżej';
+        buttonText = this.state.listChosen ? 'Losuj słowo' : 'Wybierz listę słów z MENU';
+
         button = this.state.started ?
             <button className={[styles.button, styles.btnConfirm].join(' ')}
                 onClick={this.checkAnswer}>Wpisz odpowiedź i sprawdź</button> :
@@ -119,6 +120,7 @@ class Main extends Component {
                 <div className={styles.exampleText}>{this.state.exampleText}</div>
                 <div className={styles.questionDiv}
                     style={{color: this.state.answerColor}}>{this.state.question}</div>
+
                 <input type="text" 
                     name="answerText"
                     className={styles.answerInput}
@@ -126,12 +128,13 @@ class Main extends Component {
                     onKeyDown={this.keyDownHandler}
                     value={this.state.answerText} 
                     />
+
                 {button}
 
-                <button className={[styles.button, styles.btnWords].join(' ')}
+                {/* <button className={[styles.button, styles.btnWords].join(' ')}
                     onClick={this.chooseWordList}>Animals</button>
                 <button className={[styles.button, styles.btnWords].join(' ')}
-                    onClick={this.chooseWordList}>Post</button>
+                    onClick={this.chooseWordList}>Post</button> */}
             </main>
         )
     }
