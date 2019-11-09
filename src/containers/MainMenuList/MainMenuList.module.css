@@ -1,0 +1,40 @@
+.MainMenuList {
+    position: absolute;
+    top: 33px;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    width: 150px;
+    transition-duration: .1s;
+}
+.MainMenuList.Visible {
+    background-color: #79daec;
+    /* opacity: 1; */
+    transform: scaleX(1);
+}
+.MainMenuList.inVisible {
+    /* opacity: 0; */
+    transform: scaleX(0);
+}
+.MainMenuList li {
+    font-size: 16px;
+    padding-left: 15px;
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+    border-bottom: 1px solid #6bc3d4;
+    box-sizing: border-box;
+    font-size: .8em;
+
+}
+.MainMenuList li:hover {
+    background-color: #23c0de;
+    border-bottom: 3px solid #317aab;
+    font-size: .85em;
+}
+.MainMenuList li::before {
+    position: absolute;
+    content: ">";
+    left: 5px;
+}
