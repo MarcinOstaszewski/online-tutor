@@ -1,5 +1,6 @@
 import React from 'react';
 import Main from './components/Main/Main'
+import MainMenu from './containers/MainMenu/MainMenu'
 import styles from './App.module.css';
 
 const App = () => {
@@ -8,7 +9,8 @@ const App = () => {
 		<div className="App">
 
 			<header>
-				<div className={styles.NavBar}>-NAVBAR-</div>
+				<MainMenu />
+				<div className={styles.NavBar}>NAVBAR</div>
 			</header>
 			
 			<Main />
