@@ -1,4 +1,4 @@
-const wordsPost = {
+const wordsPostOffice = {
     0: {
         q: 'skrzynka', 
         a : 'box'
@@ -49,4 +49,4 @@ const wordsPost = {
     }
 }
 
-export default wordsPost;
+export { wordsPostOffice };
