@@ -1,0 +1,15 @@
+.MainMenu {
+  position: relative;
+  width: 150px;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  box-sizing: border-box;
+  transition-duration: .1s;
+} 
+.MainMenu:hover,
+.MainMenu.active {
+  background-color: #67c4d6;
+  border-bottom: 3px solid #4ab0c3;
+  font-size: 1.03em;
+}
