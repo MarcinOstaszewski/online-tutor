@@ -1,140 +1,143 @@
 import React, { Component } from 'react';
-import styles from './Main.module.css';
+import { wordsPostOffice } from '../../assets/wordLists/wordsPostOffice';
+import { wordsAnimals1, wordsAnimals2, wordsAnimals3 } from '../../assets/wordLists/wordsAnimals';
 
-import wordsPost from '../../assets/wordLists/wordsPost';
-import wordsAnimals from '../../assets/wordLists/wordsAnimals';
+import styles from './Main.module.css';
 
 class Main extends Component {
     state = {
+        chosenListName: '',
         lastRandom: 0,
-        random: 0,
-        exampleText: '---',
-        question: 'Wybierz listę z MENU',
+        currKey: 0,
+        exampleText: '',
+        question: '',
+        answer: '',
+        currentKeysArray: [],
         answerText: '',
         answerColor: 'black',
         listChosen: false,
-        started: false,
     }
-
-    listName = ''
 
     wordsLists = {
-        wordsAnimals: wordsAnimals,
-        wordsPost: wordsPost
-    }
-    
-    getRandom = (max) => {
-        return Math.floor(Math.random() * max);
-    } 
-
-    chooseQuestion = () => {
-        return this.wordsLists[this.listName][this.state.random].q
+        wordsAnimals1: wordsAnimals1,
+        wordsAnimals2: wordsAnimals2,
+        wordsAnimals3: wordsAnimals3,
+        wordsPostOffice: wordsPostOffice
     }
 
     checkAnswer = () => {
         let q = this.state.question;
-        let inputA = this.state.answerText;
-        let correctA = this.wordsLists[this.listName][this.state.lastRandom].a
-        let correct = (this.state.answerText === correctA);
-        if (correct) {
-            this.setState({
-                question: "DOBRZE! " + q + ' to po angielsku ' + inputA + '!',
-                answerColor: 'green',
-                started: false
-            })
+        let givenAnswer = this.state.answerText;
+        let a = this.state.answer;
+        let currKeysArr = this.state.currentKeysArray;
+        let currKey = currKeysArr[this.state.currKey];
+
+        if (a === givenAnswer) {
+            if (currKeysArr.length > 1) {
+                currKeysArr.splice(this.state.currKey, 1);
+                this.setState({
+                    question: "DOBRZE! " + q + ' to po angielsku ' + givenAnswer + '!',
+                    answerColor: 'green',
+                    answerText: '',
+                    currentKeysArray: currKeysArr
+                })
+            } else {
+                this.setState({
+                    question: "WSPANIALE, poznałeś wszystkie słowa z listy!!!",
+                    answerColor: 'blue',
+                    answerText: '',
+
+                })
+            }
         } else {
+            currKeysArr.push(currKey)
             this.setState({
-                question: "Niestety... " + q + ' to po angielsku ' + correctA + '!',
+                question: "Niestety... " + q + ' to po angielsku ' + a + '!',
                 answerColor: 'red',
-                started: false
+                answerText: '',
+                currentKeysArray: currKeysArr
             })
         }
-        return this.wordsLists[this.listName][this.state.lastRandom].a;
+        this.answerInput.focus()
     }
+
+    firstTimeEnter = true;
 
     keyDownHandler = (e) => {
         if (e.key === 'Enter') {
-            this.checkAnswer();
+            if (this.firstTimeEnter) {
+                console.log('First: ', this.firstTimeEnter)
+                this.checkAnswer();
+                this.firstTimeEnter = false;
+            } else {
+                console.log('Second: ', this.firstTimeEnter, this.state.chosenListName)
+                this.getQuestionFromList(this.wordsLists[this.state.chosenListName], this.state.currentKeysArray);
+                this.firstTimeEnter = true;
+            }
         }
     }
-    changeAnswerHandler = (e) => {
+    changeInputTextHandler = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
     }
 
-    updateRnd = () => {
-        let rand = this.state.random;
+    getQuestionFromList = (chosenList, currentKeysArray) => {
+        console.log("cKA :" + currentKeysArray)
+        let chosenListLocal = chosenList || this.state.chosenListName;
+        let currentKeysArrayLocal = currentKeysArray || this.state.currentKeysArray;
+        let rand = Math.floor(Math.random() * currentKeysArrayLocal.length);
+        let chosenKey = currentKeysArrayLocal[rand];
+        let question = chosenListLocal[chosenKey].q;
+        let answer = chosenListLocal[chosenKey].a;
         this.setState({
-            lastRandom: rand,
-            random: this.getRandom(Object.keys(this.wordsLists[this.listName]).length)
+            question: question,
+            answer: answer,
+            answerColor: 'black',
+            currKey: rand,
         })
+        this.answerInput.focus();
+        // console.log(this.state.currentKeysArray)
     }
 
-    updateQuestion = () => {
-        this.updateRnd();
-        console.log(this.state.random);
-        this.setState({
-            question: this.chooseQuestion(),
-            answerColor: 'black'
-        })
+    componentDidUpdate = (oldprops) => {
+        const newProps = this.props;
+        if (oldprops.chosenListName !== newProps.chosenListName) {
+            let chosenList = this.wordsLists[this.props.chosenListName];
+            let currentKeysArray = Object.keys(chosenList); // array with all question/answer keys
+            this.setState({ 
+                chosenListName: this.props.chosenListName,
+                currentKeysArray: currentKeysArray,
+                listChosen: true
+            })
+            this.getQuestionFromList(chosenList, currentKeysArray);
+        }
+        this.answerInput.focus()
     }
-
-    startGame = () => {
-        this.updateQuestion();
-        this.setState({
-            started: true,
-            answerText: ''
-        })
-    }
-
-    chooseWordList = (e) => {
-        console.log(e.target.innerText);
-        this.listName = 'words' + e.target.innerText;
-        this.updateRnd();
-        // this.startGame();
-        this.setState({
-            question: 'Naciśnij "Losuj słowo"',
-            listChosen: true
-        })
-    }
-
-    // componentDidMount = () => {
-    //     console.log(this.state.question);
-    // }
     
     render() {
-        let button, buttonText;
-        buttonText = this.state.listChosen ? 'Losuj słowo' : 'Wybierz listę słów z MENU';
-
-        button = this.state.started ?
-            <button className={[styles.button, styles.btnConfirm].join(' ')}
-                onClick={this.checkAnswer}>Wpisz odpowiedź i sprawdź</button> :
-            <button className={[styles.button, styles.btnStart].join(' ')}
-                onClick={this.startGame}
-                disabled={!this.state.listChosen}>{buttonText}</button>
-        ;
-
+        let chosenListNameText = this.state.chosenListName === ""
+            ? 'Wybierz listę słów z MENU' 
+            : ('Wybrana lista: ');
+        
         return (
-            <main className={styles.Centered}>
+            <main className={styles.Centered} >
+                <div className={styles.chosenListName}>{chosenListNameText}<b>{this.state.chosenListName}</b></div>
+                
                 <div className={styles.exampleText}>{this.state.exampleText}</div>
+                
                 <div className={styles.questionDiv}
                     style={{color: this.state.answerColor}}>{this.state.question}</div>
 
                 <input type="text" 
                     name="answerText"
-                    className={styles.answerInput}
-                    onChange={this.changeAnswerHandler}
+                    ref={(input) => { this.answerInput = input; }} 
+                    className={[styles.answerInput, this.state.listChosen ? "" : styles.invisible].join(' ','')}
+                    onChange={this.changeInputTextHandler}
                     onKeyDown={this.keyDownHandler}
                     value={this.state.answerText} 
+                    focus="true"
                     />
-
-                {button}
-
-                {/* <button className={[styles.button, styles.btnWords].join(' ')}
-                    onClick={this.chooseWordList}>Animals</button>
-                <button className={[styles.button, styles.btnWords].join(' ')}
-                    onClick={this.chooseWordList}>Post</button> */}
             </main>
         )
     }

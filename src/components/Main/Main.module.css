@@ -2,14 +2,21 @@
     text-align: center;
     margin: 0 auto;
 }
+.chosenListName {
+    height: 20px;
+    margin: 20px 0 10px;
+    font-size: 1.2em;
+}
 .exampleText {
+    height: 20px;
     margin: 20px 0 10px;
     font-size: 0.8em;
     font-style: italic;
 }
 .questionDiv {
-    margin: 10px 0;
-    font-size: 1.2em;
+    height: 25px;
+    margin: 10px 0 30px;
+    font-size: 1.5em;
 }
 .answerInput {
     display: block;
@@ -45,4 +52,7 @@
 .btnWords {
     border: 1px solid #5b3984;
     background-color: #8654c1;
+}
+.invisible {
+    display: none;
 }
