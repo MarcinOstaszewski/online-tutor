@@ -15,7 +15,7 @@ class Main extends Component {
         currentKeysArray: [],
         answerText: '',
         answerColor: 'black',
-        listChosen: false,
+        listChosen: false
     }
 
     wordsLists = {
@@ -33,22 +33,21 @@ class Main extends Component {
         let currKey = currKeysArr[this.state.currKey];
 
         if (a === givenAnswer) {
-            if (currKeysArr.length > 1) {
-                currKeysArr.splice(this.state.currKey, 1);
-                this.setState({
-                    question: "DOBRZE! " + q + ' to po angielsku ' + givenAnswer + '!',
-                    answerColor: 'green',
-                    answerText: '',
-                    currentKeysArray: currKeysArr
-                })
+            currKeysArr.splice(this.state.currKey, 1);
+            let question, ansColor;
+            if (currKeysArr.length > 0) {
+                question = "DOBRZE! " + q + ' to po angielsku ' + givenAnswer + '!';
+                ansColor = 'green';
             } else {
-                this.setState({
-                    question: "WSPANIALE, poznałeś wszystkie słowa z listy!!!",
-                    answerColor: 'blue',
-                    answerText: '',
-
-                })
+                question = "WSPANIALE, poznałeś wszystkie słowa z listy!!!";
+                ansColor = 'blue';
             }
+            this.setState({
+                question: question,
+                answerColor: ansColor,
+                answerText: '',
+                currentKeysArray: currKeysArr
+            })
         } else {
             currKeysArr.push(currKey)
             this.setState({
@@ -70,8 +69,17 @@ class Main extends Component {
                 this.checkAnswer();
                 this.firstTimeEnter = false;
             } else {
-                console.log('Second: ', this.firstTimeEnter, this.state.chosenListName)
-                this.getQuestionFromList(this.wordsLists[this.state.chosenListName], this.state.currentKeysArray);
+                console.log('Second: ', this.firstTimeEnter, this.state.currentKeysArray)
+
+                if (this.state.currentKeysArray.length > 0) {
+                    this.getQuestionFromList(this.wordsLists[this.state.chosenListName], this.state.currentKeysArray);
+                } else {
+                    this.setState({
+                        listChosen: false,
+                        chosenListName: '',
+                        question: ''
+                    })
+                }
                 this.firstTimeEnter = true;
             }
         }
@@ -94,7 +102,7 @@ class Main extends Component {
             question: question,
             answer: answer,
             answerColor: 'black',
-            currKey: rand,
+            currKey: rand
         })
         this.answerInput.focus();
         // console.log(this.state.currentKeysArray)
@@ -116,6 +124,7 @@ class Main extends Component {
     }
     
     render() {
+        console.log(this.state.chosenListName)
         let chosenListNameText = this.state.chosenListName === ""
             ? 'Wybierz listę słów z MENU' 
             : ('Wybrana lista: ');
