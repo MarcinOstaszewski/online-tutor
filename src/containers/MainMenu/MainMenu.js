@@ -8,24 +8,26 @@ class MainMenu extends Component {
     state = {
         isListVisible: false,
     }
-
-
-    MenuClickHandler = (e) => {
+    
+    
+    MenuClickHandler = () => {
         let vis = this.state.isListVisible;
-
         this.setState({
             isListVisible: !vis
         })
     }
 
     render() {
-        console.log('MainMenu: ' + this.state.isListVisible)
         return ( 
             <div>
                 <div className={[styles.MainMenu, this.state.isListVisible ? styles.active : '' ].join(' ')}
                     onClick={this.MenuClickHandler}
                 >MENU</div>
-                <MainMenuList visible={this.state.isListVisible} />
+                <MainMenuList 
+                    visible={this.state.isListVisible} 
+                    clickHandler={this.props.wordListClicked}
+                    hideList={this.MenuClickHandler}
+                />
             </div> 
         );
     }
