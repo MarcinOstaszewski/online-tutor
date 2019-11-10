@@ -1,4 +1,4 @@
-const wordsAnimals = {
+const wordsAnimals1 = {
     0: {
         q: 'jeż', 
         a: 'hedgehog'
@@ -82,7 +82,9 @@ const wordsAnimals = {
     20: {
         q: 'mysz',
         a: 'mouse'
-    },
+    }
+}
+const wordsAnimals2 = {
     21: {
         q: 'żaba',
         a: 'frog'
@@ -141,7 +143,7 @@ const wordsAnimals = {
     },
     35: {
         q: 'wilk', 
-        a: 'woolf'
+        a: 'wolf'
     },
     36: {
         q: 'jagnię', 
@@ -162,7 +164,9 @@ const wordsAnimals = {
     40: {
         q: 'jastrząb',
         a: 'hawk'
-    },
+    }
+}
+const wordsAnimals3 = {
     41: {
         q: 'kaczka',
         a: 'duck'
@@ -193,5 +197,4 @@ const wordsAnimals = {
     }
 }
 
-// export { wordsAnimals };
-export default wordsAnimals;
+export { wordsAnimals1, wordsAnimals2, wordsAnimals3 };
