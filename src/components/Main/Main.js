@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { wordsPostOffice } from '../../assets/wordLists/wordsPostOffice';
 import { wordsAnimals1, wordsAnimals2, wordsAnimals3 } from '../../assets/wordLists/wordsAnimals';
+import { wordsPostOffice } from '../../assets/wordLists/wordsPostOffice';
+import { wordsFruitsNuts1, wordsFruitsNuts2, wordsFruitsNuts3 } from '../../assets/wordLists/wordsFruitsNuts';
 
 import styles from './Main.module.css';
 
@@ -22,7 +23,10 @@ class Main extends Component {
         wordsAnimals1: wordsAnimals1,
         wordsAnimals2: wordsAnimals2,
         wordsAnimals3: wordsAnimals3,
-        wordsPostOffice: wordsPostOffice
+        wordsPostOffice: wordsPostOffice,
+        wordsFruitsNuts1: wordsFruitsNuts1,
+        wordsFruitsNuts2: wordsFruitsNuts2,
+        wordsFruitsNuts3: wordsFruitsNuts3,
     }
 
     checkAnswer = () => {
