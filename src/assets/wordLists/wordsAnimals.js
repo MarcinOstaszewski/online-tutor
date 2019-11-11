@@ -1,199 +1,231 @@
 const wordsAnimals1 = {
     0: {
-        q: 'jeż', 
-        a: 'hedgehog'
+        pol: 'jeż', 
+        eng: 'hedgehog'
     },
     1: {
-        q: 'lis', 
-        a: 'fox'
+        pol: 'lis', 
+        eng: 'fox'
     },
     2: {
-        q: 'lew', 
-        a: 'lion'
+        pol: 'lew', 
+        eng: 'lion'
     },
     3: {
-        q: 'pantera',
-        a: 'panther'
+        pol: 'pantera',
+        eng: 'panther'
     },
     4: {
-        q: 'żyrafa', 
-        a: 'giraffe'
+        pol: 'żyrafa', 
+        eng: 'giraffe'
     },
     5: {
-        q: 'słoń', 
-        a: 'elephant'
+        pol: 'słoń', 
+        eng: 'elephant'
     },
     6: {
-        q: 'wielbłąd',
-        a: 'camel'
+        pol: 'wielbłąd',
+        eng: 'camel'
     },
     7: {
-        q: 'pawian',
-        a: 'baboon'
+        pol: 'pawian',
+        eng: 'baboon'
     },
     8: {
-        q: 'goryl',
-        a: 'gorilla'
+        pol: 'goryl',
+        eng: 'gorilla'
     },
     9: {
-        q: 'nosorożec',
-        a: 'rhinoceros'
+        pol: 'nosorożec',
+        eng: 'rhinoceros'
     },
     10: {
-        q: 'kurczak',
-        a: 'chicken'
+        pol: 'kurczak',
+        eng: 'chicken'
     },
     11: {
-        q: 'kura',
-        a: 'hen'
+        pol: 'kura',
+        eng: 'hen'
     },
     12: {
-        q: 'gibon',
-        a: 'gibbon'
+        pol: 'gibon',
+        eng: 'gibbon'
     },
     13: {
-        q: 'królik', 
-        a: 'rabbit'
+        pol: 'królik', 
+        eng: 'rabbit'
     },
     14: {
-        q: 'ryba', 
-        a: 'fish'
+        pol: 'ryba', 
+        eng: 'fish'
     },
     15: {
-        q: 'niedźwiedź', 
-        a: 'bear'
+        pol: 'niedźwiedź', 
+        eng: 'bear'
     },
     16: {
-        q: 'krokodyl',
-        a: 'crockodile'
+        pol: 'krokodyl',
+        eng: 'crockodile'
     },
     17: {
-        q: 'małpa',
-        a: 'monkey'
+        pol: 'małpa',
+        eng: 'monkey'
     },
     18: {
-        q: 'ptak',
-        a: 'bird'
+        pol: 'ptak',
+        eng: 'bird'
     },
     19: {
-        q: 'jeleń',
-        a: 'deer'
+        pol: 'jeleń',
+        eng: 'deer'
     },
     20: {
-        q: 'mysz',
-        a: 'mouse'
+        pol: 'mysz',
+        eng: 'mouse'
     }
 }
 const wordsAnimals2 = {
     21: {
-        q: 'żaba',
-        a: 'frog'
+        pol: 'żaba',
+        eng: 'frog'
     },
     22: {
-        q: 'koza',
-        a: 'goat'
+        pol: 'koza',
+        eng: 'goat'
     },
     23: {
-        q: 'chomik', 
-        a: 'hamster'
+        pol: 'chomik', 
+        eng: 'hamster'
     },
     24: {
-        q: 'koń', 
-        a: 'horse'
+        pol: 'koń', 
+        eng: 'horse'
     },
     25: {
-        q: 'kangur', 
-        a: 'kangaroo'
+        pol: 'kangur', 
+        eng: 'kangaroo'
     },
     26: {
-        q: 'owca',
-        a: 'sheep'
+        pol: 'owca',
+        eng: 'sheep'
     },
     27: {
-        q: 'papuga',
-        a: 'parrot'
+        pol: 'papuga',
+        eng: 'parrot'
     },
     28: {
-        q: 'świnia',
-        a: 'pig'
+        pol: 'świnia',
+        eng: 'pig'
     },
     29: {
-        q: 'kucyk',
-        a: 'pony'
+        pol: 'kucyk',
+        eng: 'pony'
     },
     30: {
-        q: 'szczur',
-        a: 'rat'
+        pol: 'szczur',
+        eng: 'rat'
     },
     31: {
-        q: 'wiewiórka',
-        a: 'squirrel'
+        pol: 'wiewiórka',
+        eng: 'squirrel'
     },
     32: {
-        q: 'ropucha',
-        a: 'toad'
+        pol: 'ropucha',
+        eng: 'toad'
     },
     33: {
-        q: 'tygrys', 
-        a: 'tiger'
+        pol: 'tygrys', 
+        eng: 'tiger'
     },
     34: {
-        q: 'wieloryb', 
-        a: 'whale'
+        pol: 'wieloryb', 
+        eng: 'whale'
     },
     35: {
-        q: 'wilk', 
-        a: 'wolf'
+        pol: 'wilk', 
+        eng: 'wolf'
     },
     36: {
-        q: 'jagnię', 
-        a: 'lamb'
+        pol: 'jagnię', 
+        eng: 'lamb'
     },
     37: {
-        q: 'wąż', 
-        a: 'snake'
+        pol: 'wąż', 
+        eng: 'snake'
     },
     38: {
-        q: 'jaszczurka',
-        a: 'lizzard'
+        pol: 'jaszczurka',
+        eng: 'lizzard'
     },
     39: {
-        q: 'orzeł',
-        a: 'eagle'
+        pol: 'orzeł',
+        eng: 'eagle'
     },
     40: {
-        q: 'jastrząb',
-        a: 'hawk'
+        pol: 'jastrząb',
+        eng: 'hawk'
     }
 }
 const wordsAnimals3 = {
     41: {
-        q: 'kaczka',
-        a: 'duck'
+        pol: 'kaczka',
+        eng: 'duck'
     },
     42: {
-        q: 'bawół',
-        a: 'buffalo'
+        pol: 'bawół',
+        eng: 'buffalo'
     },
     43: {
-        q: 'niedźwiedź polarny', 
-        a: 'polar bear'
+        pol: 'niedźwiedź polarny', 
+        eng: 'polar bear'
     },
     44: {
-        q: 'koala', 
-        a: 'coala'
+        pol: 'koala', 
+        eng: 'coala'
     },
     45: {
-        q: 'dziobak', 
-        a: 'platypus'
+        pol: 'dziobak', 
+        eng: 'platypus'
     },
     46: {
-        q: 'wróbel', 
-        a: 'sparow'
+        pol: 'wróbel', 
+        eng: 'sparow'
     },
     47: {
-        q: 'gołąb', 
-        a: 'pidgeon'
+        pol: 'gołąb', 
+        eng: 'pidgeon'
+    },
+    48: {
+        pol: 'daniel',
+        eng: 'fallow deer'
+    },
+    49: {
+        pol: 'dzik',
+        eng: 'boar'
+    },
+    50: {
+        pol: 'kuna',
+        eng: 'marten'
+    },
+    51: {
+        pol: 'łoś',
+        eng: 'moose'
+    },
+    52: {
+        pol: 'ryś',
+        eng: 'Lynx'
+    },
+    53: {
+        pol: 'sarna',
+        eng: 'roe'
+    },
+    54: {
+        pol: 'zając',
+        eng: 'hare'
+    },
+    55: {
+        pol: 'żubr',
+        eng: 'aurochs'
     }
 }
 
