@@ -1,51 +1,81 @@
 const wordsPostOffice = {
-    0: {
-        q: 'skrzynka', 
-        a : 'box'
+    "1": {
+        "pol": "skrzynka",
+        "eng": "box",
+        "ger": "Box",
+        "esp": "caja"
     },
-    1: {
-        q: 'list', 
-        a: 'letter'
+    "2": {
+        "pol": "kasa",
+        "eng": "cashier",
+        "ger": "Registrierkasse  ",
+        "esp": "caja registradora"
     },
-    2: {
-        q: 'listonosz', 
-        a: 'mailman'
+    "3": {
+        "pol": "klient",
+        "eng": "client",
+        "ger": "Kunde",
+        "esp": "cliente"
     },
-    3: {
-        q: 'papier', 
-        a : 'paper'
+    "4": {
+        "pol": "koperta",
+        "eng": "envelope",
+        "ger": "Umschlag",
+        "esp": "envoltura"
     },
-    4: {
-        q: 'znaczek', 
-        a: 'stamp'
+    "5": {
+        "pol": "list",
+        "eng": "letter",
+        "ger": "Schreiben",
+        "esp": "carta"
     },
-    5: {
-        q: 'koperta', 
-        a: 'envelope'
+    "6": {
+        "pol": "listonosz",
+        "eng": "mailman",
+        "ger": "Postbote",
+        "esp": "cartero"
     },
-    6: {
-        q: 'paczka',
-        a: 'parcel'
+    "7": {
+        "pol": "paczka",
+        "eng": "parcel",
+        "ger": "Paket",
+        "esp": "parcela"
     },
-    7: {
-        q: 'kasa',
-        a: 'cashier'
+    "8": {
+        "pol": "papier",
+        "eng": "paper",
+        "ger": "Papier",
+        "esp": "papel"
     },
-    8: {
-        q: 'urzędnik',
-        a: 'clerk'
+    "9": {
+        "pol": "pieczątka",
+        "eng": "stamp",
+        "ger": "Stempel",
+        "esp": "sello de goma"
     },
-    9: {
-        q: 'skrzynka',
-        a: 'box'
+    "10": {
+        "pol": "skrzynka",
+        "eng": "box",
+        "ger": "Box",
+        "esp": "caja"
     },
-    10: {
-        q: 'klient',
-        a: 'client'
+    "11": {
+        "pol": "urzędnik",
+        "eng": "clerk",
+        "ger": "Schreiber",
+        "esp": "empleado"
     },
-    11: {
-        q: 'pieczątka',
-        a: 'stamp'
+    "12": {
+        "pol": "znaczek",
+        "eng": "stamp",
+        "ger": "Stempel",
+        "esp": "sello"
+    },
+    "13": {
+        "pol": "długopis",
+        "eng": "pen",
+        "ger": "Kugelschreiber ",
+        "esp": "bolígrafo"
     }
 }
 
