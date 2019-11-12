@@ -2,21 +2,24 @@ import React, { Component } from 'react';
 import { wordsAnimals1, wordsAnimals2, wordsAnimals3 } from '../../assets/wordLists/wordsAnimals';
 import { wordsPostOffice } from '../../assets/wordLists/wordsPostOffice';
 import { wordsFruitsNuts1, wordsFruitsNuts2, wordsFruitsNuts3 } from '../../assets/wordLists/wordsFruitsNuts';
+import { wordsTrees1, wordsTrees2 } from '../../assets/wordLists/wordsTrees';
 
 import styles from './Main.module.css';
 
 class Main extends Component {
     state = {
         chosenListName: '',
+        chosenLanguageQuestion: 'pol',
+        chosenLanguageAnswer: 'eng',
         lastRandom: 0,
         currKey: 0,
         exampleText: '',
         question: '',
         answer: '',
-        currentKeysArray: [],
         answerText: '',
         answerColor: 'black',
-        listChosen: false
+        currentKeysArray: [],
+                    listChosen: false
     }
 
     wordsLists = {
@@ -27,6 +30,8 @@ class Main extends Component {
         wordsFruitsNuts1: wordsFruitsNuts1,
         wordsFruitsNuts2: wordsFruitsNuts2,
         wordsFruitsNuts3: wordsFruitsNuts3,
+        wordsTrees1: wordsTrees1,
+        wordsTrees2: wordsTrees2,
     }
 
     checkAnswer = () => {
@@ -73,7 +78,7 @@ class Main extends Component {
                 this.checkAnswer();
                 this.firstTimeEnter = false;
             } else {
-                console.log('Second: ', this.firstTimeEnter, this.state.currentKeysArray)
+                // console.log('Second: ', this.firstTimeEnter, this.state.currentKeysArray)
 
                 if (this.state.currentKeysArray.length > 0) {
                     this.getQuestionFromList(this.wordsLists[this.state.chosenListName], this.state.currentKeysArray);
@@ -95,13 +100,13 @@ class Main extends Component {
     }
 
     getQuestionFromList = (chosenList, currentKeysArray) => {
-        console.log("cKA :" + currentKeysArray)
+        // console.log("cKA :" + currentKeysArray)
         let chosenListLocal = chosenList || this.state.chosenListName;
         let currentKeysArrayLocal = currentKeysArray || this.state.currentKeysArray;
         let rand = Math.floor(Math.random() * currentKeysArrayLocal.length);
         let chosenKey = currentKeysArrayLocal[rand];
-        let question = chosenListLocal[chosenKey].q;
-        let answer = chosenListLocal[chosenKey].a;
+        let question = chosenListLocal[chosenKey][this.state.chosenLanguageQuestion];
+        let answer = chosenListLocal[chosenKey][this.state.chosenLanguageAnswer];
         this.setState({
             question: question,
             answer: answer,
@@ -109,7 +114,6 @@ class Main extends Component {
             currKey: rand
         })
         this.answerInput.focus();
-        // console.log(this.state.currentKeysArray)
     }
 
     componentDidUpdate = (oldprops) => {
@@ -128,7 +132,7 @@ class Main extends Component {
     }
     
     render() {
-        console.log(this.state.chosenListName)
+        // console.log(this.state.chosenListName)
         let chosenListNameText = this.state.chosenListName === ""
             ? 'Wybierz listę słów z MENU' 
             : ('Wybrana lista: ');
