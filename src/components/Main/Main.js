@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import MainMenu from '../../containers/MainMenu/MainMenu'
+
+import styles from './Main.module.css';
+
 import { wordsAnimals1, wordsAnimals2, wordsAnimals3 } from '../../assets/wordLists/wordsAnimals';
 import { wordsPostOffice } from '../../assets/wordLists/wordsPostOffice';
 import { wordsFruitsNuts1, wordsFruitsNuts2, wordsFruitsNuts3 } from '../../assets/wordLists/wordsFruitsNuts';
 import { wordsTrees1, wordsTrees2 } from '../../assets/wordLists/wordsTrees';
-
-import styles from './Main.module.css';
 
 class Main extends Component {
     state = {
@@ -19,7 +21,6 @@ class Main extends Component {
         answerText: '',
         answerColor: 'black',
         currentKeysArray: [],
-                    listChosen: false
     }
 
     wordsLists = {
@@ -34,12 +35,26 @@ class Main extends Component {
         wordsTrees2: wordsTrees2,
     }
 
+    wordListChosen = (txt) => {
+        const chosenListName = 'words' + txt.replace(' ', '');
+        const chosenList = this.wordsLists[chosenListName];
+        const currentKeysArray = Object.keys(chosenList); // array with only keys
+        this.setState({ 
+            chosenListName: chosenListName,
+            currentKeysArray: currentKeysArray,
+        })
+        this.getQuestionFromList(chosenList, currentKeysArray);
+        this.setState({
+            chosenListName: 'words' + txt.replace(' ', ''),
+        })
+    }
+
     checkAnswer = () => {
-        let q = this.state.question;
-        let givenAnswer = this.state.answerText;
-        let a = this.state.answer;
-        let currKeysArr = this.state.currentKeysArray;
-        let currKey = currKeysArr[this.state.currKey];
+        const q = this.state.question;
+        const givenAnswer = this.state.answerText;
+        const a = this.state.answer;
+        const currKeysArr = this.state.currentKeysArray;
+        const currKey = currKeysArr[this.state.currKey];
 
         if (a === givenAnswer) {
             currKeysArr.splice(this.state.currKey, 1);
@@ -69,27 +84,24 @@ class Main extends Component {
         this.answerInput.focus()
     }
 
-    firstTimeEnter = true;
+    firstEnter = true;
 
     keyDownHandler = (e) => {
         if (e.key === 'Enter') {
-            if (this.firstTimeEnter) {
-                console.log('First: ', this.firstTimeEnter)
+            if (this.firstEnter) {
+                console.log('First: ', this.firstEnter)
                 this.checkAnswer();
-                this.firstTimeEnter = false;
+                this.firstEnter = false;
             } else {
-                // console.log('Second: ', this.firstTimeEnter, this.state.currentKeysArray)
-
                 if (this.state.currentKeysArray.length > 0) {
                     this.getQuestionFromList(this.wordsLists[this.state.chosenListName], this.state.currentKeysArray);
                 } else {
                     this.setState({
-                        listChosen: false,
                         chosenListName: '',
                         question: ''
                     })
                 }
-                this.firstTimeEnter = true;
+                this.firstEnter = true;
             }
         }
     }
@@ -100,13 +112,12 @@ class Main extends Component {
     }
 
     getQuestionFromList = (chosenList, currentKeysArray) => {
-        // console.log("cKA :" + currentKeysArray)
-        let chosenListLocal = chosenList || this.state.chosenListName;
-        let currentKeysArrayLocal = currentKeysArray || this.state.currentKeysArray;
-        let rand = Math.floor(Math.random() * currentKeysArrayLocal.length);
-        let chosenKey = currentKeysArrayLocal[rand];
-        let question = chosenListLocal[chosenKey][this.state.chosenLanguageQuestion];
-        let answer = chosenListLocal[chosenKey][this.state.chosenLanguageAnswer];
+        const chosenListLocal = chosenList || this.state.chosenListName;
+        const currentKeysArrayLocal = currentKeysArray || this.state.currentKeysArray;
+        const rand = Math.floor(Math.random() * currentKeysArrayLocal.length);
+        const chosenKey = currentKeysArrayLocal[rand];
+        const question = chosenListLocal[chosenKey][this.state.chosenLanguageQuestion];
+        const answer = chosenListLocal[chosenKey][this.state.chosenLanguageAnswer];
         this.setState({
             question: question,
             answer: answer,
@@ -116,46 +127,45 @@ class Main extends Component {
         this.answerInput.focus();
     }
 
-    componentDidUpdate = (oldprops) => {
-        const newProps = this.props;
-        if (oldprops.chosenListName !== newProps.chosenListName) {
-            let chosenList = this.wordsLists[this.props.chosenListName];
-            let currentKeysArray = Object.keys(chosenList); // array with all question/answer keys
-            this.setState({ 
-                chosenListName: this.props.chosenListName,
-                currentKeysArray: currentKeysArray,
-                listChosen: true
-            })
-            this.getQuestionFromList(chosenList, currentKeysArray);
-        }
-        this.answerInput.focus()
+    componentDidUpdate = () => {
+        console.log('updated!')
+        console.log(this.state.chosenListName)
     }
     
     render() {
-        // console.log(this.state.chosenListName)
-        let chosenListNameText = this.state.chosenListName === ""
+        const chosenListNameText = this.state.chosenListName === ""
             ? 'Wybierz listę słów z MENU' 
             : ('Wybrana lista: ');
         
         return (
-            <main className={styles.Centered} >
-                <div className={styles.chosenListName}>{chosenListNameText}<b>{this.state.chosenListName}</b></div>
-                
-                <div className={styles.exampleText}>{this.state.exampleText}</div>
-                
-                <div className={styles.questionDiv}
-                    style={{color: this.state.answerColor}}>{this.state.question}</div>
 
-                <input type="text" 
-                    name="answerText"
-                    ref={(input) => { this.answerInput = input; }} 
-                    className={[styles.answerInput, this.state.listChosen ? "" : styles.invisible].join(' ','')}
-                    onChange={this.changeInputTextHandler}
-                    onKeyDown={this.keyDownHandler}
-                    value={this.state.answerText} 
-                    focus="true"
+            <div>
+                <header>
+					<MainMenu wordListClicked={this.wordListChosen}
+                        wordsLists={this.wordsLists}
                     />
-            </main>
+					<div className={styles.NavBar}>NAVBAR</div>
+				</header>
+
+                <main className={styles.Centered} >
+                    <div className={styles.chosenListName}>{chosenListNameText}<b>{this.state.chosenListName.replace('words','')}</b></div>
+                
+                    <div className={styles.exampleText}>{this.state.exampleText}</div>
+                    
+                    <div className={styles.questionDiv}
+                        style={{color: this.state.answerColor}}>{this.state.question}</div>
+
+                    <input type="text" 
+                        name="answerText"
+                        ref={(input) => { this.answerInput = input; }} 
+                        className={[styles.answerInput, (this.state.chosenListName !== '') ? "" : styles.invisible].join(' ','')}
+                        onChange={this.changeInputTextHandler}
+                        onKeyDown={this.keyDownHandler}
+                        value={this.state.answerText} 
+                        focus="true"
+                        />
+                </main>
+            </div>
         )
     }
 }
