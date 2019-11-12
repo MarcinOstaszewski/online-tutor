@@ -27,6 +27,7 @@ class MainMenu extends Component {
                     visible={this.state.isListVisible} 
                     clickHandler={this.props.wordListClicked}
                     hideList={this.MenuClickHandler}
+                    wordsLists={this.props.wordsLists}
                 />
             </div> 
         );
