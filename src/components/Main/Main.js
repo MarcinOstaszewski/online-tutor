@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import MainMenu from '../../containers/MainMenu/MainMenu'
+import MainMenu from '../../containers/MainMenu/MainMenu';
+import LanguagesSelector from '../../containers/LanguagesSelector/LanguagesSelector';
 
 import styles from './Main.module.css';
 
-import { wordsAnimals1, wordsAnimals2, wordsAnimals3 } from '../../assets/wordLists/wordsAnimals';
+import { wordsAnimals_part1, wordsAnimals_part2, wordsAnimals_part3 } from '../../assets/wordLists/wordsAnimals';
 import { wordsPostOffice } from '../../assets/wordLists/wordsPostOffice';
-import { wordsFruitsNuts1, wordsFruitsNuts2, wordsFruitsNuts3 } from '../../assets/wordLists/wordsFruitsNuts';
-import { wordsTrees1, wordsTrees2 } from '../../assets/wordLists/wordsTrees';
+import { wordsFruitsNuts_part1, wordsFruitsNuts_part2, wordsFruitsNuts_part3 } from '../../assets/wordLists/wordsFruitsNuts';
+import { wordsTrees_part1, wordsTrees_part2 } from '../../assets/wordLists/wordsTrees';
 
 class Main extends Component {
     state = {
@@ -24,15 +25,15 @@ class Main extends Component {
     }
 
     wordsLists = {
-        wordsAnimals1: wordsAnimals1,
-        wordsAnimals2: wordsAnimals2,
-        wordsAnimals3: wordsAnimals3,
+        wordsAnimals_part1: wordsAnimals_part1,
+        wordsAnimals_part2: wordsAnimals_part2,
+        wordsAnimals_part3: wordsAnimals_part3,
         wordsPostOffice: wordsPostOffice,
-        wordsFruitsNuts1: wordsFruitsNuts1,
-        wordsFruitsNuts2: wordsFruitsNuts2,
-        wordsFruitsNuts3: wordsFruitsNuts3,
-        wordsTrees1: wordsTrees1,
-        wordsTrees2: wordsTrees2,
+        wordsFruitsNuts_part1: wordsFruitsNuts_part1,
+        wordsFruitsNuts_part2: wordsFruitsNuts_part2,
+        wordsFruitsNuts_part3: wordsFruitsNuts_part3,
+        wordsTrees_part1: wordsTrees_part1,
+        wordsTrees_part2: wordsTrees_part2,
     }
 
     wordListChosen = (txt) => {
@@ -150,8 +151,9 @@ class Main extends Component {
                 <main className={styles.Centered} >
                     <div className={styles.chosenListName}>{chosenListNameText}<b>{this.state.chosenListName.replace('words','')}</b></div>
                 
-                    <div className={styles.exampleText}>{this.state.exampleText}</div>
-                    
+                    {/* <div className={styles.exampleText}>{this.state.exampleText}</div> */}
+
+                    <LanguagesSelector className={styles.Centered} />
                     <div className={styles.questionDiv}
                         style={{color: this.state.answerColor}}>{this.state.question}</div>
 
