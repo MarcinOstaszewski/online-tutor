@@ -1,4 +1,4 @@
-const wordsFruitsNuts1 = {
+const wordsFruitsNuts_part1 = {
      "1": {
       "pol": "agrest",
       "eng": "gooseberry",
@@ -120,7 +120,7 @@ const wordsFruitsNuts1 = {
       "esp": "pera"
    }
 }
-const wordsFruitsNuts2 = {
+const wordsFruitsNuts_part2 = {
     "21": {
       "pol": "jabłko",
       "eng": "apple",
@@ -242,7 +242,7 @@ const wordsFruitsNuts2 = {
       "esp": "nopal"
    }
 }
-const wordsFruitsNuts3 = {
+const wordsFruitsNuts_part3 = {
    "41": {
       "pol": "orzech brazylijski",
       "eng": "brazil nut",
@@ -365,4 +365,4 @@ const wordsFruitsNuts3 = {
    }
 }
 
-export {wordsFruitsNuts1, wordsFruitsNuts2, wordsFruitsNuts3 }
+export {wordsFruitsNuts_part1, wordsFruitsNuts_part2, wordsFruitsNuts_part3 }

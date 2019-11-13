@@ -1,4 +1,4 @@
-const wordsTrees1 = {
+const wordsTrees_part1 = {
     "1": {
         "pol": "brzoza",
         "eng": "birch-tree",
@@ -120,7 +120,7 @@ const wordsTrees1 = {
         "esp": "cal"
     }
 }
-const wordsTrees2 = {
+const wordsTrees_part2 = {
     "21": {
         "pol": "magnolia",
         "eng": "magnolia",
@@ -237,4 +237,4 @@ const wordsTrees2 = {
     }
 }
 
-export { wordsTrees1, wordsTrees2 };
+export { wordsTrees_part1, wordsTrees_part2 };

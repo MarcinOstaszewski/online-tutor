@@ -1,5 +1,5 @@
-const wordsAnimals1 = {
-     "1": {
+const wordsAnimals_part1 = {
+    "1": {
       "pol": "bawół",
       "eng": "buffalo",
       "ger": "Büffel",
@@ -120,7 +120,7 @@ const wordsAnimals1 = {
       "esp": "cocodrilo"
    }
 }
-const wordsAnimals2 = {
+const wordsAnimals_part2 = {
     "21": {
         "pol": "królik",
         "eng": "rabbit",
@@ -242,7 +242,7 @@ const wordsAnimals2 = {
         "esp": "sapo"
     }
 }
-const wordsAnimals3 = {
+const wordsAnimals_part3 = {
     "41": {
         "pol": "ryba",
         "eng": "fish",
@@ -347,4 +347,4 @@ const wordsAnimals3 = {
     }
 }
 
-export { wordsAnimals1, wordsAnimals2, wordsAnimals3 };
+export { wordsAnimals_part1, wordsAnimals_part2, wordsAnimals_part3 };
