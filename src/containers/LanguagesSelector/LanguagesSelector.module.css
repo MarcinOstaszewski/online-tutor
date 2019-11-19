@@ -1,0 +1,9 @@
+.Centered {
+    height: 40px;
+    width: 550px;
+    margin: 10px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}

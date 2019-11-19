@@ -1,20 +1,21 @@
 import React from 'react'
-import LanguageSelect from '../LanguageSelect/LanguageSelect';
+import LanguageSelect from './LanguageSelect/LanguageSelect';
 
 import styles from './LanguagesSelector.module.css';
 
 const LanguagesSelector = (props) => {
-
+    
     return ( 
-        <div>
+        <div className={styles.Centered}>
             <LanguageSelect 
-                className={styles.LanguageSelect}
-                languageClicked={this.props.langChosenHandler} 
-                role="question"/>
-            <LanguageSelect 
-                className={styles.LanguageSelect} 
-                languageClicked={this.props.langChosenHandler} 
-                role="answer"/>
+                languageClicked={props.langChosenHandler} 
+                languages={props.languages}
+                role="q" />
+            <div>=></div>
+            <LanguageSelect  
+                languageClicked={props.langChosenHandler} 
+                languages={props.languages}
+                role="a" />
         </div>
      );
 }
