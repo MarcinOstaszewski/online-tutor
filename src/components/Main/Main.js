@@ -36,7 +36,9 @@ class Main extends Component {
         wordsTrees_part2: wordsTrees_part2,
     }
 
-    wordListChosen = (txt) => {
+    languages = {pol: "Polski", eng: "English", ger: "Deutsche", esp: "Español"}
+
+    wordListChosen = txt => {
         const chosenListName = 'words' + txt.replace(' ', '');
         const chosenList = this.wordsLists[chosenListName];
         const currentKeysArray = Object.keys(chosenList); // array with only keys
@@ -87,7 +89,7 @@ class Main extends Component {
 
     firstEnter = true;
 
-    keyDownHandler = (e) => {
+    keyDownHandler = e => {
         if (e.key === 'Enter') {
             if (this.firstEnter) {
                 console.log('First: ', this.firstEnter)
@@ -106,7 +108,7 @@ class Main extends Component {
             }
         }
     }
-    changeInputTextHandler = (e) => {
+    changeInputTextHandler = e => {
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -128,6 +130,12 @@ class Main extends Component {
         this.answerInput.focus();
     }
 
+    languageChosenHandler = e => {
+        // console.log(e.target.innerText)
+        console.log(e.target.id)
+        // console.log(e.target.getAttribute('role'))
+    }
+
     componentDidUpdate = () => {
         console.log('updated!')
         console.log(this.state.chosenListName)
@@ -142,10 +150,11 @@ class Main extends Component {
 
             <div>
                 <header>
-					<MainMenu wordListClicked={this.wordListChosen}
+					<MainMenu 
+                        wordListClicked={this.wordListChosen}
                         wordsLists={this.wordsLists}
-                    />
-					<div className={styles.NavBar}>NAVBAR</div>
+                        />
+					{/* <div className={styles.NavBar}>NAVBAR</div> */}
 				</header>
 
                 <main className={styles.Centered} >
@@ -153,7 +162,11 @@ class Main extends Component {
                 
                     {/* <div className={styles.exampleText}>{this.state.exampleText}</div> */}
 
-                    <LanguagesSelector className={styles.Centered} />
+                    <LanguagesSelector 
+                        languages={this.languages} 
+                        langChosenHandler={this.languageChosenHandler}
+                        />
+
                     <div className={styles.questionDiv}
                         style={{color: this.state.answerColor}}>{this.state.question}</div>
 
