@@ -1,8 +1,22 @@
-.Centered {
-    margin: 10px;
+.LangInfo {
+    font-size: 0.8rem;
+    line-height: 1.4rem;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    background-color: #ef7e68;
+    color: white;
+}
+.LangInfo div {
+    padding: 0 15px;
+}
+.Selector {
+    padding: 10px 10px 5px 10px;
+    border-radius: 0 0 10px 10px;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
+    background-color: #68d9ef;
 }
 .Divider {
     width: 50px;
