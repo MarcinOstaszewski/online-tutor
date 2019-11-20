@@ -22,7 +22,8 @@ class Main extends Component {
         answerText: '',
         answerColor: 'black',
         currentKeysArray: [],
-        langsActive: "qpol",
+        langsActive: ["qpol", "aeng"],
+        placeholder: "wpisz odpowiedź"
     }
 
     wordsLists = {
@@ -53,11 +54,25 @@ class Main extends Component {
         })
     }
 
-    partAnsw = {
-        pol: " to po ",
-        eng: " is in ",
-        ger: " ist IM ",
-        esp: " es UN "
+    partAnsw = { 
+        0: {
+            pol: " to po ",
+            eng: " is in ",
+            ger: " ist auf ",
+            esp: " es UN "
+        },
+        pol: {
+            pol: "polsku",
+            eng: "angielsku",
+            ger: "niemiecku",
+            esp: "hiszpańsku"
+        },
+        eng: {
+            pol: "Polish",
+            eng: "English",
+            ger: "Deutsche",
+            esp: "Spanish"
+        },
     }
 
     checkAnswer = () => {
@@ -66,7 +81,7 @@ class Main extends Component {
         const a = this.state.answer;
         const currKeysArr = this.state.currentKeysArray;
         const currKey = currKeysArr[this.state.currKey];
-        const part1 = this.partAnsw[this.state.chosenLanguageQuestion]
+        const part1 = this.partAnsw[0][this.state.chosenLanguageQuestion]
 
         if (a === givenAnswer) {
             currKeysArr.splice(this.state.currKey, 1);
@@ -82,7 +97,8 @@ class Main extends Component {
                 question: question,
                 answerColor: ansColor,
                 answerText: '',
-                currentKeysArray: currKeysArr
+                currentKeysArray: currKeysArr,
+                placeholder: 'naciśnij Enter'
             })
         } else {
             currKeysArr.push(currKey)
@@ -104,13 +120,19 @@ class Main extends Component {
                 console.log('First: ', this.firstEnter)
                 this.checkAnswer();
                 this.firstEnter = false;
+                this.setState({
+                    placeholder: 'naciśnij Enter'
+                })
             } else {
                 if (this.state.currentKeysArray.length > 0) {
                     this.getQuestionFromList(this.wordsLists[this.state.chosenListName], this.state.currentKeysArray);
+                    this.setState({
+                        placeholder: 'wpisz odpowiedź'
+                    })
                 } else {
                     this.setState({
                         chosenListName: '',
-                        question: ''
+                        question: '',
                     })
                 }
                 this.firstEnter = true;
@@ -134,25 +156,32 @@ class Main extends Component {
             question: question,
             answer: answer,
             answerColor: 'black',
-            currKey: rand
+            currKey: rand,
         })
         this.answerInput.focus();
     }
 
     languageChosenHandler = e => {
+        let currLangs = this.state.langsActive;
         let clicked = e.target.id;
         let dir = clicked.slice(0,1);
         let lang = clicked.slice(1);
+        if (dir === "q") {
+            currLangs.shift();
+            currLangs.unshift(clicked);
+        } else {
+            currLangs.pop();
+            currLangs.push(clicked);
+        }
+
         dir === "q" ? this.setState({
             chosenLanguageQuestion: lang,
-            langsActive: clicked
+            langsActive: currLangs
         }) : this.setState({
             chosenLanguageAnswer: lang,
-            langsActive: clicked
+            langsActive: currLangs
         })
     }
-    
-    
 
     // componentDidUpdate = () => {
     //     console.log(this.state.langsActive)
@@ -160,7 +189,7 @@ class Main extends Component {
     
     render() {
         const chosenListNameText = this.state.chosenListName === ""
-            ? 'Wybierz listę słów z MENU' 
+            ? 'Wybierz języki oraz listę słów z Menu' 
             : ('Wybrana lista: ');
         
         return (
@@ -170,19 +199,22 @@ class Main extends Component {
 					<MainMenu 
                         wordListClicked={this.wordListChosen}
                         wordsLists={this.wordsLists}
+                        languages={this.languages} 
+                        isActive={this.state.langsActive}
                         />
 				</header>
 
                 <main className={styles.Centered} >
-                    <div className={styles.chosenListName}>{chosenListNameText}<b>{this.state.chosenListName.replace('words','')}</b></div>
-                
-                    {/* <div className={styles.exampleText}>{this.state.exampleText}</div> */}
 
                     <LanguagesSelector 
                         languages={this.languages} 
                         langChosenHandler={this.languageChosenHandler}
                         isActive={this.state.langsActive}
                         />
+
+                    <div className={styles.chosenListName}>{chosenListNameText}<b>{this.state.chosenListName.replace('words','')}</b></div>
+                
+                    {/* <div className={styles.exampleText}>{this.state.exampleText}</div> */}
 
                     <div className={styles.questionDiv}
                         style={{color: this.state.answerColor}}>{this.state.question}</div>
@@ -195,6 +227,7 @@ class Main extends Component {
                         onKeyDown={this.keyDownHandler}
                         value={this.state.answerText} 
                         focus="true"
+                        placeholder={this.state.placeholder}
                         />
                 </main>
             </div>

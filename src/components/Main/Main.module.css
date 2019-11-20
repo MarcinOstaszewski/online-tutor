@@ -1,14 +1,13 @@
 header {
-  height: 50px;
+  /* height: 50px; */
   background-color: #68d9ef;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 0 80px;
+  padding: 0 10px;
 }
 header>div {
   display: inline-block;
-  width: 120px;
   height: 50px;
   line-height: 50px;
   text-align: center;
@@ -63,8 +62,13 @@ footer {
     border: 1px solid #44bbaa;
     box-shadow: none;
     text-align: center;
-    font-size: 1em;
+    font-size: 1.5em;
 }
+.answerInput::placeholder{
+    color: #ccc;
+    font-size: 0.5em;
+    letter-spacing: 0.25em;
+    }
 .button {
     display: block;
     margin: 10px auto;
