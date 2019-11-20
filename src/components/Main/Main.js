@@ -22,6 +22,7 @@ class Main extends Component {
         answerText: '',
         answerColor: 'black',
         currentKeysArray: [],
+        langsActive: "qpol",
     }
 
     wordsLists = {
@@ -52,18 +53,26 @@ class Main extends Component {
         })
     }
 
+    partAnsw = {
+        pol: " to po ",
+        eng: " is in ",
+        ger: " ist IM ",
+        esp: " es UN "
+    }
+
     checkAnswer = () => {
         const q = this.state.question;
         const givenAnswer = this.state.answerText;
         const a = this.state.answer;
         const currKeysArr = this.state.currentKeysArray;
         const currKey = currKeysArr[this.state.currKey];
+        const part1 = this.partAnsw[this.state.chosenLanguageQuestion]
 
         if (a === givenAnswer) {
             currKeysArr.splice(this.state.currKey, 1);
             let question, ansColor;
             if (currKeysArr.length > 0) {
-                question = "DOBRZE! " + q + ' to po angielsku ' + givenAnswer + '!';
+                question = "DOBRZE! " + q + part1 + 'angielsku ' + givenAnswer + '!';
                 ansColor = 'green';
             } else {
                 question = "WSPANIALE, poznałeś wszystkie słowa z listy!!!";
@@ -78,7 +87,7 @@ class Main extends Component {
         } else {
             currKeysArr.push(currKey)
             this.setState({
-                question: "Niestety... " + q + ' to po angielsku ' + a + '!',
+                question: "Niestety... " + q + part1 + 'angielsku ' + a + '!',
                 answerColor: 'red',
                 answerText: '',
                 currentKeysArray: currKeysArr
@@ -131,15 +140,23 @@ class Main extends Component {
     }
 
     languageChosenHandler = e => {
-        // console.log(e.target.innerText)
-        console.log(e.target.id)
-        // console.log(e.target.getAttribute('role'))
+        let clicked = e.target.id;
+        let dir = clicked.slice(0,1);
+        let lang = clicked.slice(1);
+        dir === "q" ? this.setState({
+            chosenLanguageQuestion: lang,
+            langsActive: clicked
+        }) : this.setState({
+            chosenLanguageAnswer: lang,
+            langsActive: clicked
+        })
     }
+    
+    
 
-    componentDidUpdate = () => {
-        console.log('updated!')
-        console.log(this.state.chosenListName)
-    }
+    // componentDidUpdate = () => {
+    //     console.log(this.state.langsActive)
+    // }
     
     render() {
         const chosenListNameText = this.state.chosenListName === ""
@@ -154,7 +171,6 @@ class Main extends Component {
                         wordListClicked={this.wordListChosen}
                         wordsLists={this.wordsLists}
                         />
-					{/* <div className={styles.NavBar}>NAVBAR</div> */}
 				</header>
 
                 <main className={styles.Centered} >
@@ -165,6 +181,7 @@ class Main extends Component {
                     <LanguagesSelector 
                         languages={this.languages} 
                         langChosenHandler={this.languageChosenHandler}
+                        isActive={this.state.langsActive}
                         />
 
                     <div className={styles.questionDiv}

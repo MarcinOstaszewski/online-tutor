@@ -1,9 +1,19 @@
 .LanguageItem {
     width: 45px;
     height: 20px;
-    border: 1px solid blue;
+    margin: 5px;
+    border: 1px solid #ccc;
+    background-color: #c4f0f9;
     border-radius: 4px;
     font-size: 0.6rem;
     line-height: 1.2rem;
     cursor: pointer;
+    transition: 0.25s;
+}
+.Active {
+    border: 1px solid #e27760;
+    background-color: #ef7e68;
+    color: white;
+    box-shadow: 0px 0px 3px 3px #d2675040;
+    transition: 0.25s;
 }

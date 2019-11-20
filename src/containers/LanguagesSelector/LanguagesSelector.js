@@ -10,12 +10,16 @@ const LanguagesSelector = (props) => {
             <LanguageSelect 
                 languageClicked={props.langChosenHandler} 
                 languages={props.languages}
-                role="q" />
-            <div>=></div>
+                isActive={props.isActive}
+                role="q" 
+                />
+            <div className={styles.Divider}> => </div>
             <LanguageSelect  
                 languageClicked={props.langChosenHandler} 
                 languages={props.languages}
-                role="a" />
+                isActive={props.isActive}
+                role="a" 
+                />
         </div>
      );
 }

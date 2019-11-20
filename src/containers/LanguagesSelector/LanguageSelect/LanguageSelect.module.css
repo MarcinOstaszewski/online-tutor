@@ -1,6 +1,6 @@
 .LanguageSelect {
     height: 40px;
-    width: 250px;
+    /* width: 250px; */
     display: flex;
     flex-direction: row;
     justify-content: space-around;

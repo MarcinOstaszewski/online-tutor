@@ -10,8 +10,9 @@ const LanguageSelect = (props) => {
         return <LanguageItem
             langName={props.languages[key]} 
             role={props.role}
-            key={key}
             code={key}
+            key={key}
+            isActive={props.isActive}
             langClicked={props.languageClicked}
             />
     })
