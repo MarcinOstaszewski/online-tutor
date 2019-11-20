@@ -5,9 +5,7 @@ import styles from './LanguageItem.module.css';
 const LanguageItem = (props) => {
 
     let isActive;
-    if (props.isActive === props.role+props.code) {
-        
-        console.log(props.isActive)
+    if (props.isActive.includes(props.role+props.code)) {
         isActive = styles.Active;
     }
 
@@ -16,7 +14,8 @@ const LanguageItem = (props) => {
                 role={props.role}
                 code={props.code}
                 id={props.role+props.code}
-                >{props.langName}</div> );
+                >{props.langName}</div> 
+            );
 }
  
 export default LanguageItem;

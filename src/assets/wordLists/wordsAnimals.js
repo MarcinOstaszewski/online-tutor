@@ -251,7 +251,7 @@ const wordsAnimals_part3 = {
     },
     "42": {
         "pol": "ryś",
-        "eng": "Lynx",
+        "eng": "lynx",
         "ger": "Luchs",
         "esp": "lince"
     },

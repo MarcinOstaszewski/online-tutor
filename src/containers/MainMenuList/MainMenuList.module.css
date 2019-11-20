@@ -10,11 +10,9 @@
 }
 .MainMenuList.Visible {
     background-color: #79daec;
-    /* opacity: 1; */
     transform: scaleX(1);
 }
 .MainMenuList.inVisible {
-    /* opacity: 0; */
     transform: scaleX(0);
 }
 .MainMenuList li {

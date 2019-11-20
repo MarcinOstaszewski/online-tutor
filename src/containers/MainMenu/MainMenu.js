@@ -22,7 +22,7 @@ class MainMenu extends Component {
             <div>
                 <div className={[styles.MainMenu, this.state.isListVisible ? styles.active : '' ].join(' ')}
                     onClick={this.MenuClickHandler}
-                >MENU</div>
+                    >Menu</div>
                 <MainMenuList 
                     visible={this.state.isListVisible} 
                     clickHandler={this.props.wordListClicked}
