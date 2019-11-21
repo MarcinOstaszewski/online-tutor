@@ -6,6 +6,7 @@ import styles from './Main.module.css';
 
 import { wordsAnimals_part1, wordsAnimals_part2, wordsAnimals_part3 } from '../../assets/wordLists/wordsAnimals';
 import { wordsPostOffice } from '../../assets/wordLists/wordsPostOffice';
+import { wordsPeople } from '../../assets/wordLists/wordsPeople';
 import { wordsFruitsNuts_part1, wordsFruitsNuts_part2, wordsFruitsNuts_part3 } from '../../assets/wordLists/wordsFruitsNuts';
 import { wordsTrees_part1, wordsTrees_part2 } from '../../assets/wordLists/wordsTrees';
 
@@ -31,6 +32,7 @@ class Main extends Component {
         wordsAnimals_part2: wordsAnimals_part2,
         wordsAnimals_part3: wordsAnimals_part3,
         wordsPostOffice: wordsPostOffice,
+        wordsPeople: wordsPeople,
         wordsFruitsNuts_part1: wordsFruitsNuts_part1,
         wordsFruitsNuts_part2: wordsFruitsNuts_part2,
         wordsFruitsNuts_part3: wordsFruitsNuts_part3,
@@ -54,34 +56,12 @@ class Main extends Component {
         })
     }
 
-    partAnsw = { 
-        0: {
-            pol: " to po ",
-            eng: " is in ",
-            ger: " ist auf ",
-            esp: " es UN "
-        },
-        pol: {
-            pol: "polsku",
-            eng: "angielsku",
-            ger: "niemiecku",
-            esp: "hiszpańsku"
-        },
-        eng: {
-            pol: "Polish",
-            eng: "English",
-            ger: "Deutsche",
-            esp: "Spanish"
-        },
-    }
-
     checkAnswer = () => {
         const q = this.state.question;
         const givenAnswer = this.state.answerText;
         const a = this.state.answer;
         const currKeysArr = this.state.currentKeysArray;
         const currKey = currKeysArr[this.state.currKey];
-        // const part1 = this.partAnsw[0][this.state.chosenLanguageQuestion];
 
         if (a === givenAnswer) {
             currKeysArr.splice(this.state.currKey, 1);
@@ -139,6 +119,7 @@ class Main extends Component {
             }
         }
     }
+
     changeInputTextHandler = e => {
         this.setState({
             [e.target.name]: e.target.value
@@ -173,7 +154,6 @@ class Main extends Component {
             currLangs.pop();
             currLangs.push(clicked);
         }
-
         dir === "q" ? this.setState({
             chosenLanguageQuestion: lang,
             langsActive: currLangs
@@ -189,7 +169,7 @@ class Main extends Component {
     
     render() {
         const chosenListNameText = this.state.chosenListName === ""
-            ? 'Wybierz języki oraz listę słów z Menu' 
+            ? 'Wybierz języki oraz listę słów z Menu'
             : ('Wybrana lista: ');
         
         let LEDcolor = '';
