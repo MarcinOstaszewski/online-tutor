@@ -81,13 +81,13 @@ class Main extends Component {
         const a = this.state.answer;
         const currKeysArr = this.state.currentKeysArray;
         const currKey = currKeysArr[this.state.currKey];
-        const part1 = this.partAnsw[0][this.state.chosenLanguageQuestion]
+        // const part1 = this.partAnsw[0][this.state.chosenLanguageQuestion];
 
         if (a === givenAnswer) {
             currKeysArr.splice(this.state.currKey, 1);
             let question, ansColor;
             if (currKeysArr.length > 0) {
-                question = "DOBRZE! " + q + part1 + 'angielsku ' + givenAnswer + '!';
+                question = `${q} ==> ${a}!`
                 ansColor = 'green';
             } else {
                 question = "WSPANIALE, poznałeś wszystkie słowa z listy!!!";
@@ -103,7 +103,7 @@ class Main extends Component {
         } else {
             currKeysArr.push(currKey)
             this.setState({
-                question: "Niestety... " + q + part1 + 'angielsku ' + a + '!',
+                question: `${q} ==> ${a}!`,
                 answerColor: 'red',
                 answerText: '',
                 currentKeysArray: currKeysArr
@@ -192,6 +192,13 @@ class Main extends Component {
             ? 'Wybierz języki oraz listę słów z Menu' 
             : ('Wybrana lista: ');
         
+        let LEDcolor = '';
+        switch (this.state.answerColor) {
+            case 'red': LEDcolor = styles.LEDcolorRed; break;
+            case 'green': LEDcolor = styles.LEDcolorGreen; break;
+            default:
+        }
+
         return (
 
             <div>
@@ -216,8 +223,13 @@ class Main extends Component {
                 
                     {/* <div className={styles.exampleText}>{this.state.exampleText}</div> */}
 
+
                     <div className={styles.questionDiv}
-                        style={{color: this.state.answerColor}}>{this.state.question}</div>
+                        style={{color: this.state.answerColor}}>
+                        <div className={[styles.questionLED, LEDcolor].join(' ')}></div>
+                        {this.state.question}
+                        <div className={[styles.questionLED, LEDcolor].join(' ')}></div>
+                    </div>
 
                     <input type="text" 
                         name="answerText"
