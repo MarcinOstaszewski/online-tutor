@@ -7,6 +7,7 @@ import styles from './Main.module.css';
 import { wordsAnimals_part1, wordsAnimals_part2, wordsAnimals_part3 } from '../../assets/wordLists/wordsAnimals';
 import { wordsPostOffice } from '../../assets/wordLists/wordsPostOffice';
 import { wordsPeople } from '../../assets/wordLists/wordsPeople';
+import { wordsWeekDays } from '../../assets/wordLists/wordsWeekDays';
 import { wordsFruitsNuts_part1, wordsFruitsNuts_part2, wordsFruitsNuts_part3 } from '../../assets/wordLists/wordsFruitsNuts';
 import { wordsTrees_part1, wordsTrees_part2 } from '../../assets/wordLists/wordsTrees';
 
@@ -33,6 +34,7 @@ class Main extends Component {
         wordsAnimals_part3: wordsAnimals_part3,
         wordsPostOffice: wordsPostOffice,
         wordsPeople: wordsPeople,
+        wordsWeekDays: wordsWeekDays,
         wordsFruitsNuts_part1: wordsFruitsNuts_part1,
         wordsFruitsNuts_part2: wordsFruitsNuts_part2,
         wordsFruitsNuts_part3: wordsFruitsNuts_part3,
@@ -126,11 +128,10 @@ class Main extends Component {
         })
     }
 
-    getQuestionFromList = (chosenList, currentKeysArray) => {
+    getQuestionFromList = (chosenList, currentKeysArray = this.state.currentKeysArray) => {
         const chosenListLocal = chosenList || this.state.chosenListName;
-        const currentKeysArrayLocal = currentKeysArray || this.state.currentKeysArray;
-        const rand = Math.floor(Math.random() * currentKeysArrayLocal.length);
-        const chosenKey = currentKeysArrayLocal[rand];
+        const rand = Math.floor(Math.random() * currentKeysArray.length);
+        const chosenKey = currentKeysArray[rand];
         const question = chosenListLocal[chosenKey][this.state.chosenLanguageQuestion];
         const answer = chosenListLocal[chosenKey][this.state.chosenLanguageAnswer];
         this.setState({
@@ -170,7 +171,7 @@ class Main extends Component {
     render() {
         const chosenListNameText = this.state.chosenListName === ""
             ? 'Wybierz języki oraz listę słów z Menu'
-            : ('Wybrana lista: ');
+            : ('Lista: ');
         
         let LEDcolor = '';
         switch (this.state.answerColor) {
@@ -178,6 +179,12 @@ class Main extends Component {
             case 'green': LEDcolor = styles.LEDcolorGreen; break;
             default:
         }
+
+        let allRemaining = this.state.currentKeysArray.length
+        let uniqueRemaining = (new Set(this.state.currentKeysArray)).size
+
+        let wordsRemain = this.state.chosenListName === "" ? "" :
+            <span className={styles.wordsRemain}>, Pozostało: <b>{uniqueRemaining}</b> słów, <b>{allRemaining}</b> powtórek</span>;
 
         return (
 
@@ -199,7 +206,10 @@ class Main extends Component {
                         isActive={this.state.langsActive}
                         />
 
-                    <div className={styles.chosenListName}>{chosenListNameText}<b>{this.state.chosenListName.replace('words','')}</b></div>
+                    <div className={styles.chosenListName}>
+                        {chosenListNameText}<b>{this.state.chosenListName.replace('words','').replace('_', ' ')}</b> 
+                        {wordsRemain}
+                        </div>
                 
                     {/* <div className={styles.exampleText}>{this.state.exampleText}</div> */}
 
