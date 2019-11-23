@@ -4,13 +4,6 @@ import LanguagesSelector from '../../containers/LanguagesSelector/LanguagesSelec
 
 import styles from './Main.module.css';
 
-import { wordsAnimals_part1, wordsAnimals_part2, wordsAnimals_part3 } from '../../assets/wordLists/wordsAnimals';
-import { wordsPostOffice } from '../../assets/wordLists/wordsPostOffice';
-import { wordsPeople } from '../../assets/wordLists/wordsPeople';
-import { wordsWeekDays } from '../../assets/wordLists/wordsWeekDays';
-import { wordsFruitsNuts_part1, wordsFruitsNuts_part2, wordsFruitsNuts_part3 } from '../../assets/wordLists/wordsFruitsNuts';
-import { wordsTrees_part1, wordsTrees_part2 } from '../../assets/wordLists/wordsTrees';
-
 class Main extends Component {
     state = {
         chosenListName: '',
@@ -28,19 +21,7 @@ class Main extends Component {
         placeholder: "wpisz odpowiedź"
     }
 
-    wordsLists = {
-        wordsAnimals_part1: wordsAnimals_part1,
-        wordsAnimals_part2: wordsAnimals_part2,
-        wordsAnimals_part3: wordsAnimals_part3,
-        wordsPostOffice: wordsPostOffice,
-        wordsPeople: wordsPeople,
-        wordsWeekDays: wordsWeekDays,
-        wordsFruitsNuts_part1: wordsFruitsNuts_part1,
-        wordsFruitsNuts_part2: wordsFruitsNuts_part2,
-        wordsFruitsNuts_part3: wordsFruitsNuts_part3,
-        wordsTrees_part1: wordsTrees_part1,
-        wordsTrees_part2: wordsTrees_part2,
-    }
+    wordsLists = this.props.wordsLists;
 
     languages = {pol: "Polski", eng: "English", ger: "Deutsche", esp: "Español"}
 
