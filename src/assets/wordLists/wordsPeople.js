@@ -112,6 +112,18 @@ const wordsPeople = {
         "eng": "buddy",
         "ger": "Kumpel",
         "esp": "camarada"
+    },
+    "21": {
+        "pol": "matka",
+        "eng": "mother",
+        "ger": "Mutter",
+        "esp": "madre"
+    },
+    "22": {
+        "pol": "ojciec",
+        "eng": "father",
+        "ger": "Vater",
+        "esp": "padre"
     }
 }
 
