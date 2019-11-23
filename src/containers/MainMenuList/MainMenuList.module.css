@@ -5,11 +5,11 @@
     flex-direction: column;
     list-style: none;
     padding: 0;
-    width: 150px;
-    transition-duration: .1s;
+    width: 180px;
+    transition-duration: .2s;
 }
 .MainMenuList.Visible {
-    background-color: #79daec;
+    background-color: #0E5547;
     transform: scaleX(1);
 }
 .MainMenuList.inVisible {
@@ -21,7 +21,7 @@
     height: 40px;
     line-height: 40px;
     text-align: left;
-    border-bottom: 1px solid #6bc3d4;
+    border-bottom: 1px solid #003D31;
     box-sizing: border-box;
     font-size: .8em;
 

@@ -4,8 +4,8 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
-    background-color: #ef7e68;
-    color: white;
+    background-color: #428477;
+    color: #f8fffe;
 }
 .LangInfo div {
     padding: 0 15px;
@@ -16,7 +16,7 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    background-color: #68d9ef;
+    background-color: #428477;
 }
 .Divider {
     width: 50px;

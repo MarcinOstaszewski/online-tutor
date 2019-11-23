@@ -2,8 +2,8 @@
     width: 45px;
     height: 20px;
     margin: 5px;
-    border: 1px solid #bbb;
-    background-color: #c4f0f9;
+    border: 1px solid #003D31;
+    background-color: #699C92;
     border-radius: 4px;
     font-size: 0.6rem;
     line-height: 1.2rem;
@@ -11,9 +11,9 @@
     transition: 0.25s;
 }
 .Active {
-    border: 1px solid #e27760;
-    background-color: #ef7e68;
+    border: 1px solid #603D00;
+    background-color: #855D16;
     color: white;
-    box-shadow: 0px 0px 3px 3px #fdd4cc7c;
+    /* box-shadow: 0px 0px 3px 3px #F4D7A455; */
     transition: 0.25s;
 }

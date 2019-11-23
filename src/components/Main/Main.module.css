@@ -1,6 +1,6 @@
 header {
-  /* height: 50px; */
-  background-color: #68d9ef;
+  background-color: #246D5E;
+  color: #fff;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -25,7 +25,7 @@ footer {
   height: 40px;
   padding-top: 10px;
   color: #eee;
-  background-color: #1293ac;
+  background-color: #246D5E;
 }
 
 .Centered  {
@@ -39,8 +39,12 @@ footer {
 .chosenListName {
     height: 20px;
     margin: 20px 0 10px;
-    font-size: 1.2em;
+    font-size: 1em;
 }
+/* .wordsRemain {
+    font-size: 0.8em;
+} */
+
 .exampleText {
     height: 20px;
     margin: 20px 0 10px;
@@ -84,7 +88,7 @@ footer {
     max-width: 60%;
     height: 60px;
     border-radius: 7px;
-    border: 1px solid #44bbaa;
+    border: 1px solid #428477;
     box-shadow: none;
     text-align: center;
     font-size: 1.5em;
