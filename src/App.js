@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Main from './components/Main/Main'
+import Main from './components/Main/Main';
 
 import { wordsAnimals_part1, wordsAnimals_part2, wordsAnimals_part3 } from './assets/wordLists/wordsAnimals';
 import { wordsPostOffice } from './assets/wordLists/wordsPostOffice';
@@ -36,7 +36,7 @@ class App extends Component {
 
 		return (
 			<div className="App">
-				
+
 				<Main wordsLists={this.wordsLists}/>
 
 				<footer>Online-Tutor by MarcinO</footer>
