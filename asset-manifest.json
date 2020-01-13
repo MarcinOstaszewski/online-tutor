@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/MarcinOstaszewski/online-tutor/static/css/main.71b71743.chunk.css",
-    "main.js": "/MarcinOstaszewski/online-tutor/static/js/main.335d3604.chunk.js",
-    "main.js.map": "/MarcinOstaszewski/online-tutor/static/js/main.335d3604.chunk.js.map",
-    "runtime-main.js": "/MarcinOstaszewski/online-tutor/static/js/runtime-main.5be01252.js",
-    "runtime-main.js.map": "/MarcinOstaszewski/online-tutor/static/js/runtime-main.5be01252.js.map",
-    "static/js/2.2f275617.chunk.js": "/MarcinOstaszewski/online-tutor/static/js/2.2f275617.chunk.js",
-    "static/js/2.2f275617.chunk.js.map": "/MarcinOstaszewski/online-tutor/static/js/2.2f275617.chunk.js.map",
-    "index.html": "/MarcinOstaszewski/online-tutor/index.html",
-    "precache-manifest.7016b88931ccf322136eee1d2dba065d.js": "/MarcinOstaszewski/online-tutor/precache-manifest.7016b88931ccf322136eee1d2dba065d.js",
-    "service-worker.js": "/MarcinOstaszewski/online-tutor/service-worker.js",
-    "static/css/main.71b71743.chunk.css.map": "/MarcinOstaszewski/online-tutor/static/css/main.71b71743.chunk.css.map",
-    "static/js/2.2f275617.chunk.js.LICENSE": "/MarcinOstaszewski/online-tutor/static/js/2.2f275617.chunk.js.LICENSE"
+    "main.css": "/online-tutor/static/css/main.71b71743.chunk.css",
+    "main.js": "/online-tutor/static/js/main.34cea386.chunk.js",
+    "main.js.map": "/online-tutor/static/js/main.34cea386.chunk.js.map",
+    "runtime-main.js": "/online-tutor/static/js/runtime-main.a9710ad6.js",
+    "runtime-main.js.map": "/online-tutor/static/js/runtime-main.a9710ad6.js.map",
+    "static/js/2.2f275617.chunk.js": "/online-tutor/static/js/2.2f275617.chunk.js",
+    "static/js/2.2f275617.chunk.js.map": "/online-tutor/static/js/2.2f275617.chunk.js.map",
+    "index.html": "/online-tutor/index.html",
+    "precache-manifest.cafe4c038277be117906c4000611f990.js": "/online-tutor/precache-manifest.cafe4c038277be117906c4000611f990.js",
+    "service-worker.js": "/online-tutor/service-worker.js",
+    "static/css/main.71b71743.chunk.css.map": "/online-tutor/static/css/main.71b71743.chunk.css.map",
+    "static/js/2.2f275617.chunk.js.LICENSE": "/online-tutor/static/js/2.2f275617.chunk.js.LICENSE"
   },
   "entrypoints": [
-    "static/js/runtime-main.5be01252.js",
+    "static/js/runtime-main.a9710ad6.js",
     "static/js/2.2f275617.chunk.js",
     "static/css/main.71b71743.chunk.css",
-    "static/js/main.335d3604.chunk.js"
+    "static/js/main.34cea386.chunk.js"
   ]
 }
