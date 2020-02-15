@@ -1,29 +1,96 @@
 import React, { Component } from 'react';
+import axios from '../../axios-firebase';
+import { Route, Switch, BrowserRouter, NavLink } from 'react-router-dom';
+import { firebaseConfig } from '../Firebase/config';
+import firebase from 'firebase/app';
+import 'firebase/database';
+
+// import Test from '../../containers/Test/Test';
 import MainMenu from '../../containers/MainMenu/MainMenu';
 import LanguagesSelector from '../../containers/LanguagesSelector/LanguagesSelector';
-
 import styles from './Main.module.css';
 
 class Main extends Component {
-    state = {
-        chosenListName: '',
-        chosenLanguageQuestion: 'pol',
-        chosenLanguageAnswer: 'eng',
-        lastRandom: 0,
-        currKey: 0,
-        exampleText: '',
-        question: '',
-        answer: '',
-        answerText: '',
-        answerColor: 'black',
-        currentKeysArray: [],
-        langsActive: ["qpol", "aeng"],
-        placeholder: "wpisz odpowiedź"
+    constructor(props) {
+        super(props);
+        firebase.initializeApp(firebaseConfig);
+        this.frbs = firebase.database();
+        this.state = {
+            chosenListName: '',
+            chosenLanguageQuestion: 'pol',
+            chosenLanguageAnswer: 'eng',
+            lastRandom: 0,
+            currKey: 0,
+            exampleText: '',
+            question: '',
+            answer: '',
+            answerText: '',
+            answerColor: 'black',
+            currentKeysArray: [],
+            langsActive: ["qpol", "aeng"],
+            placeholder: "wpisz odpowiedź"
+        }
     }
+
 
     wordsLists = this.props.wordsLists;
 
     languages = {pol: "Polski", eng: "English", ger: "Deutsche", esp: "Español"}
+
+    addWordsToList = () => { // listName = 'wordsWeekDays'
+        // const name = "wordsAnimals_part2"
+        // const sendIt = {
+        //     'name': 'Animals part 2',
+        //     'list': this.wordsLists[name]
+        // }
+        for (let i in this.wordsLists) {
+            console.log(i)
+            console.log(this.wordsLists[i].name)
+            console.log(this.wordsLists[i].list)
+            
+            // if (i === 'wordsFruitsNuts_part3') {
+
+                let sendIt = {
+                    name: this.wordsLists[i].name,
+                    list: this.wordsLists[i].list
+                }
+                
+                axios.post('/wordsLists/'+ i + '.json', sendIt) // wordsLists.
+                .then(resp=>{
+                    console.log(resp)
+                })
+                .catch(err=>{
+                    console.log(err)
+                });
+            // }
+        }
+    }
+
+    getListFromFireBase = () => {
+        // axios.get('https://online-tutor-words.firebaseio.com/wordsLists.json')
+        //     .then(res => {
+        //         for (let i in res.data) {
+        //             console.log(res.data[i])
+        //         }
+        //     })
+        //     .catch(err => console.log(err))
+        const listsRef = this.frbs.ref('wordsLists/wordsHome/');
+        listsRef.once('value').then(res => {
+            let list = res.val();
+            let content = Object.keys(list)
+            list = list[content[0]];
+            console.log(list.name, list.list)
+        })
+        // listsRef.child('wordsHome').once('value').then( res => {
+        //     console.log(res)
+        // })
+    }
+
+    writeToFireBase = () => {
+        console.log(firebase)
+        const testRef = this.frbs.ref('test/');
+        testRef.set("333")
+    }
 
     wordListChosen = txt => {
         const chosenListName = 'words' + txt.replace(' ', '');
@@ -121,7 +188,7 @@ class Main extends Component {
             answerColor: 'black',
             currKey: rand,
         })
-        this.answerInput.focus();
+        // this.answerInput.focus();
     }
 
     languageChosenHandler = e => {
@@ -168,52 +235,66 @@ class Main extends Component {
             <span className={styles.wordsRemain}>, Pozostało: <b>{uniqueRemaining}</b> słów, <b>{allRemaining}</b> powtórek</span>;
 
         return (
-
-            <div>
-                <header>
-					<MainMenu 
-                        wordListClicked={this.wordListChosen}
-                        wordsLists={this.wordsLists}
-                        languages={this.languages} 
-                        isActive={this.state.langsActive}
+            // <FirebaseContext.Consumer>
+                <div>
+                    <header>
+                        <MainMenu 
+                            wordListClicked={this.wordListChosen}
+                            wordsLists={this.wordsLists}
+                            languages={this.languages} 
+                            isActive={this.state.langsActive}
                         />
-				</header>
+                        <BrowserRouter>
+                            <NavLink to="/learn">Start to learn</NavLink>
+                            <NavLink to="/lang">Languages Selector</NavLink>
+                            <NavLink to="/lists">Choose a list</NavLink>
+                        </BrowserRouter>
+                    </header>
 
-                <main className={styles.Centered} >
+                    <main className={styles.Centered}> 
 
-                    <LanguagesSelector 
-                        languages={this.languages} 
-                        langChosenHandler={this.languageChosenHandler}
-                        isActive={this.state.langsActive}
-                        />
+                        <Switch>
+                            <Route path="/lang" 
+                                render={() => { return <LanguagesSelector 
+                                    languages={this.languages} 
+                                    langChosenHandler={this.languageChosenHandler}
+                                    isActive={this.state.langsActive} /> 
+                                } }
+                            />
+                            <Route path="/learn"
+                                render={() => { return (<div>
+                                    <div className={styles.chosenListName}>
+                                    {chosenListNameText}<b>{this.state.chosenListName.replace('words','').replace('_', ' ')}</b> 
+                                    {wordsRemain}
+                                    </div>
 
-                    <div className={styles.chosenListName}>
-                        {chosenListNameText}<b>{this.state.chosenListName.replace('words','').replace('_', ' ')}</b> 
-                        {wordsRemain}
-                        </div>
-                
-                    {/* <div className={styles.exampleText}>{this.state.exampleText}</div> */}
+                                    <div className={styles.questionDiv}
+                                        style={{color: this.state.answerColor}}>
+                                        <div className={[styles.questionLED, LEDcolor].join(' ')}></div>
+                                        {this.state.question}
+                                        <div className={[styles.questionLED, LEDcolor].join(' ')}></div>
+                                    </div>
 
-
-                    <div className={styles.questionDiv}
-                        style={{color: this.state.answerColor}}>
-                        <div className={[styles.questionLED, LEDcolor].join(' ')}></div>
-                        {this.state.question}
-                        <div className={[styles.questionLED, LEDcolor].join(' ')}></div>
-                    </div>
-
-                    <input type="text" 
-                        name="answerText"
-                        ref={(input) => { this.answerInput = input; }} 
-                        className={[styles.answerInput, (this.state.chosenListName !== '') ? "" : styles.invisible].join(' ','')}
-                        onChange={this.changeInputTextHandler}
-                        onKeyDown={this.keyDownHandler}
-                        value={this.state.answerText} 
-                        focus="true"
-                        placeholder={this.state.placeholder}
-                        />
-                </main>
-            </div>
+                                    <input type="text" 
+                                        name="answerText"
+                                        ref={(input) => { this.answerInput = input; }} 
+                                        className={[styles.answerInput, (this.state.chosenListName !== '') ? "" : styles.invisible].join(' ','')}
+                                        onChange={this.changeInputTextHandler}
+                                        onKeyDown={this.keyDownHandler}
+                                        value={this.state.answerText} 
+                                        focus="true"
+                                        placeholder={this.state.placeholder}
+                                        />
+                                </div>)
+                                }} />
+                        </Switch>
+                        {/* <button onClick={this.addWordsToList}>SEND</button> */}
+                        <button onClick={this.getListFromFireBase}>GET</button>
+                        <button onClick={this.writeToFireBase}>WRITE</button>
+                        
+                    </main>
+                </div>
+            // </FirebaseContext.Consumer>
         )
     }
 }
