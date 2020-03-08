@@ -1,0 +1,119 @@
+.chosenListName {
+    display: block;
+    text-align: center;
+    /* height: 20px; */
+    margin: 15px 0 15px;
+    font-size: 1em;
+}
+.exampleText {
+    height: 20px;
+    margin: 15px 0 15px;
+    font-size: 0.8em;
+    font-style: italic;
+}
+.questionDiv {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.questionAnswer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.questionAnswer i {
+    font-size: 30px;
+}
+.questionAnswer div {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+}
+.questionAnswer b{
+    font-size: 36px;
+}
+
+.qestionDivBgGreen {
+    background-color: #0f04;
+}
+
+.questionLED {
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    border-radius: 50%;
+}
+
+.LEDcolorRed {
+    background-color: red;
+    box-shadow: #00000040 0 1px 7px 1px,
+        inset #522 0 1px 9px,
+        #ff000066 0 2px 12px;
+}
+
+.LEDcolorGreen {
+    background-color: lightgreen;
+    box-shadow: #00ff0040 0 1px 7px 1px,
+        inset #252 0 1px 9px,
+        #00ff0066 0 2px 12px;
+}
+
+.answerInput {
+    display: block;
+    margin: 10px auto;
+    width: 300px;
+    max-width: 60%;
+    height: 60px;
+    border-radius: 7px;
+    border: 1px solid #428477;
+    box-shadow: none;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.answerInput::placeholder {
+    color: #ccc;
+    font-size: 0.5em;
+    letter-spacing: 0.25em;
+}
+
+.button {
+    display: block;
+    margin: 10px auto;
+    width: 300px;
+    max-width: 60%;
+    height: 60px;
+    border-radius: 7px;
+    box-shadow: none;
+    font-size: 1em;
+}
+
+.btnConfirm {
+    border: 1px solid #60c3d6;
+    background-color: #74e0f5;
+}
+
+.btnStart {
+    border: 1px solid #54bd54;
+    background-color: #62e263;
+}
+
+.btnWords {
+    border: 1px solid #5b3984;
+    background-color: #8654c1;
+}
+
+.invisible {
+    display: none;
+}
+
+button,
+button.btn-m {
+    padding: 10px;
+    font-size: 16px;
+    margin: 10px;
+    border-radius: 5px;
+}
