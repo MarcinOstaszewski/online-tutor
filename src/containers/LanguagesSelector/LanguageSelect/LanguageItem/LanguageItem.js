@@ -4,9 +4,11 @@ import styles from './LanguageItem.module.css';
 
 const LanguageItem = (props) => {
 
+    
     let isActive;
     if (props.isActive.includes(props.role+props.code)) {
-        isActive = styles.Active;
+        console.log(props.isActive, props.role, props.code);
+        isActive = styles.active;
     }
 
     return ( <div className={[styles.LanguageItem, isActive].join(' ')}
