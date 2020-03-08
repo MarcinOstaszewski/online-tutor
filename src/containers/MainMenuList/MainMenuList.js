@@ -11,7 +11,9 @@ class MainMenuList extends Component {
     }
 
     render() {
-        const listOfWordLists = (Object.keys(this.props.wordsLists)).map( elem => <li onClick={this.listChosen} key={elem}>{elem.replace('words','')}</li> )
+        const listOfWordLists = (Object.keys(this.props.wordsLists))
+            .map( elem => <li onClick={this.listChosen} key={elem}>{elem.replace('words','')}</li> )
+            
         return (
             <ul className={[styles.MainMenuList, this.props.visible ? (styles.Visible) : (styles.inVisible)].join(' ')} >
                 {listOfWordLists}
