@@ -1,126 +1,73 @@
 header {
-  background-color: #246D5E;
-  color: #fff;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 0 10px;
+	background-color: #246D5E;
+	color: #fff;
+	display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0 10px;}
+a {
+    text-decoration: none;
 }
-header>div {
-  display: inline-block;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-  font-size: 1em;
+header>a>div {
+	display: flex;
+	flex-direction: column;
+	height: 70px;
+	padding: 5px 30px;
+	border-right: 1px solid #eee;
+	border-left: 1px solid #eee;
+    text-align: center;
+    position: relative;
 }
+header>a>div>span:first-child {
+	font-size: 30px;
+    padding-right: 10px;
+    color: #f1f1f1;
+}
+header>a>div>span>sup {
+    /* position: absolute; */
+    font-size: 15px;
+}
+header>a>div>span:nth-child(2) {
+    display: block;
+    font-size: 15px;
+    line-height: 12px;
+    padding-left: 25px;
+    color: #eee;
+    min-width: 112px;
+}
+header>a>div>div {
+    font-size: 12px;
+    line-height: 24px;
+    color: #abd0c8;
+    text-align: left;
+}
+header>a>div i{
+    font-size: 15px;
+    color: #abd0c8;
+    animation: ok .5s forwards;
+}
+header>a>div i.moving {
+    animation: flashing .66s ease-in-out alternate infinite;
+}
+@keyframes flashing {
+    from {padding-left: 5px;}
+    to {padding-left: 12px;}
+}
+@keyframes ok {
+    from {padding-left: 8px;}
+}
+
 main {
-  height: calc(100vh - 100px);
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  background-color: #f1f6f7;
+	height: calc(100vh - 100px);
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	background-color: #f1f6f7;
 }
 footer {
-  width: 100%;
-  height: 40px;
-  padding-top: 10px;
-  color: #eee;
-  background-color: #246D5E;
-}
-
-.Centered  {
-    /* text-align: center; */
-    margin: 0 auto;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
-    align-items: center;
-}
-.chosenListName {
-    height: 20px;
-    margin: 20px 0 10px;
-    font-size: 1em;
-}
-/* .wordsRemain {
-    font-size: 0.8em;
-} */
-
-.exampleText {
-    height: 20px;
-    margin: 20px 0 10px;
-    font-size: 0.8em;
-    font-style: italic;
-}
-.questionDiv {
-    height: 30px;
-    margin: 10px;
-    font-size: 1.5em;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-}
-.qestionDivBgGreen {
-    background-color: #0f04;
-}
-.questionLED {
-    width: 30px;
-    height: 30px;
-    margin: 10px;
-    border-radius: 50%;
-}
-.LEDcolorRed {
-    background-color: red;
-    box-shadow: #00000040 0 1px 7px 1px, 
-        inset #522 0 1px 9px,
-        #ff000066 0 2px 12px;
-}
-.LEDcolorGreen {
-    background-color: lightgreen;
-    box-shadow: #00ff0040 0 1px 7px 1px,
-        inset #252 0 1px 9px,
-        #00ff0066 0 2px 12px;
-}
-.answerInput {
-    display: block;
-    margin: 10px auto;
-    width: 300px;
-    max-width: 60%;
-    height: 60px;
-    border-radius: 7px;
-    border: 1px solid #428477;
-    box-shadow: none;
-    text-align: center;
-    font-size: 1.5em;
-}
-.answerInput::placeholder{
-    color: #ccc;
-    font-size: 0.5em;
-    letter-spacing: 0.25em;
-    }
-.button {
-    display: block;
-    margin: 10px auto;
-    width: 300px;
-    max-width: 60%;
-    height: 60px;
-    border-radius: 7px;
-    box-shadow: none;
-    font-size: 1em;
-}
-.btnConfirm {
-    border: 1px solid #60c3d6;
-    background-color: #74e0f5;
-}
-
-.btnStart {
-    border: 1px solid #54bd54;
-    background-color: #62e263;
-}
-.btnWords {
-    border: 1px solid #5b3984;
-    background-color: #8654c1;
-}
-.invisible {
-    display: none;
+	width: 100%;
+	height: 40px;
+	padding-top: 10px;
+	color: #eee;
+	background-color: #246D5E;
 }
