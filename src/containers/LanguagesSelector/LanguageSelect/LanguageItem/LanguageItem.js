@@ -4,10 +4,8 @@ import styles from './LanguageItem.module.css';
 
 const LanguageItem = (props) => {
 
-    
     let isActive;
     if (props.isActive.includes(props.role+props.code)) {
-        console.log(props.isActive, props.role, props.code);
         isActive = styles.active;
     }
 
