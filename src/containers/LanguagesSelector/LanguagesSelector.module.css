@@ -1,26 +1,17 @@
-.LangInfo {
-    font-size: 0.8rem;
-    line-height: 1.4rem;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
-    background-color: #428477;
-    color: #f8fffe;
-}
-.LangInfo div {
-    padding: 0 15px;
-}
 .Selector {
-    padding: 10px 10px 5px 10px;
-    border-radius: 0 0 10px 10px;
+    width: 100%;
+    height: 500px;
     display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    background-color: #428477;
 }
-.Divider {
-    width: 50px;
+.Selector>div {
+    width: 40%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    height: 100%;
+}
+.Selector p {
+    font-size: 25px;
+    color: #40b59b;
+    padding-left: 15px;
+    margin: 0 0 5px 0;
 }
