@@ -5,6 +5,13 @@
     margin: 15px 0 15px;
     font-size: 1em;
 }
+.chosenListName strong{
+    color: #0e0e83;
+    font-size: 1.25em;
+}
+.textSmall {
+    font-size: .85em;
+}
 .exampleText {
     height: 20px;
     margin: 15px 0 15px;
@@ -23,12 +30,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px 0 10px 0;
 }
 .questionAnswer i {
     font-size: 30px;
 }
 .questionAnswer div {
-    text-align: center;
+    /* text-align: center; */
     display: flex;
     flex-direction: row;
 }

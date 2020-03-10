@@ -29,13 +29,11 @@ class Main extends Component {
     listChosenHandler = name => {
         this.frbs.ref('lists/').child(name).once('value').then(res=> {
             let list = res.val().list;
-            console.log('LIST: ', list, Object.keys(list))
             this.setState({
                 chosenListName: name,
                 chosenListContent: list,
                 currentKeysArray: Object.keys(list)
             })
-            // console.log(res.val().list, name)
         })
     }
 
@@ -82,6 +80,7 @@ class Main extends Component {
         let navLangsNames = '';
         if (this.state.langsActive.length > 1) {
             navLangsNames = <span>from: <b>{this.languages[this.state.langsActive[0].slice(1)]}</b> to: <b>{this.languages[this.state.langsActive[1].slice(1)]}</b></span>
+            console.log(navLangsNames)
         }
 
         return (
@@ -115,6 +114,7 @@ class Main extends Component {
                                         chosenListName={this.state.chosenListName}
                                         chosenListContent={this.state.chosenListContent}
                                         currentKeysArray={this.state.currentKeysArray}
+                                        langsActive={this.state.langsActive}
                                         languages={this.languages}
                                         />
                                     }} 

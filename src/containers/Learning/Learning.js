@@ -7,8 +7,8 @@ class Learning extends Component {
         super(props);
         console.log(props)
         this.state = {
-            chosenLanguageQuestion: 'pol',
-            chosenLanguageAnswer: 'eng',
+            chosenLanguageQuestion: props.langsActive[0].slice(1),
+            chosenLanguageAnswer: props.langsActive[1].slice(1),
             chosenListName: props.chosenListName,
             chosenListContent: props.chosenListContent,
             answerColor: 'black',
@@ -117,7 +117,7 @@ class Learning extends Component {
 
         const chosenListNameText = (this.state.chosenListName === "")
             ? <div><div>Before you start:</div><div>1. Chose a list of words,</div><div>2. Select languages: <b>from</b> and <b>to</b>.</div></div>
-            : 'Active list: ';
+            : <span>Active list: </span>;
         
         let allRemaining, uniqueRemaining, LEDcolor = '', questionBlock;
 
@@ -134,6 +134,7 @@ class Learning extends Component {
         let wordsRemain = this.state.chosenListName === "" ? "" :
             <span className={styles.wordsRemain}><b>{uniqueRemaining}</b> words to learn, <b>{allRemaining}</b> repetitions</span>;
 
+        console.log(this.state.chosenLanguageQuestion, this.state.chosenLanguageAnswer)
         if (this.state.question) {
             questionBlock = <div className={styles.questionDiv}
                                 style={{color: this.state.answerColor}}>
@@ -144,7 +145,8 @@ class Learning extends Component {
                                         <b>{this.state.question}</b>
                                         <div className={[styles.questionLED, LEDcolor].join(' ')}></div>
                                     </div>
-                                    <div>translate into: {this.props.languages[this.state.chosenLanguageAnswer]}</div>
+                                    <div className={styles.textSmall}>translate from:<strong>&nbsp;{this.props.languages[this.state.chosenLanguageQuestion]}</strong>
+                                    &nbsp;to:<strong>&nbsp;{this.props.languages[this.state.chosenLanguageAnswer]}</strong></div>
                                 </div>
                                 
                             </div>
@@ -154,8 +156,8 @@ class Learning extends Component {
         return (
             <div>
                 <div className={styles.chosenListName}>
-                <div>{chosenListNameText}<b>{this.props.chosenListName.replace('words','').replace('_', ' ')}</b></div>
-                <div>{wordsRemain}</div>
+                <div>{chosenListNameText}<strong>{this.props.chosenListName.replace('words','').replace('_', ' ')}</strong></div>
+                <div className={styles.textSmall}>{wordsRemain}</div>
                 </div>
 
                 {questionBlock}
